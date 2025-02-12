@@ -30,6 +30,10 @@ class User{
     }
 
     // Getters
+    public function getId(){
+        return $this->id;
+    }
+
     public function getFname() {
         return $this->fname;
     }
@@ -59,6 +63,16 @@ class User{
     }
 
     // Setters with validation
+    public function setId($id) {
+        if($id != null){
+            if(!is_int($id))
+                throw new InputException("ID must be an integer.");
+            if($id <= 0)
+                throw new InputException("Id must be a positive number greater than 0 !");
+        }
+        $this->id = $id;
+    }
+    
     public function setFname($fname){
         if($fname != null){
             if(!is_string($fname) || empty($fname))
