@@ -32,7 +32,11 @@ class Transaction {
 
     // Modificateur (Setters)
     public function setCurrentDestination($current_destination) {
-        $this->current_destination = $current_destination;
+        if ($current_destination !== null) {
+            $this->current_destination = $current_destination;
+        } else {
+            throw new Exception("La destination actuelle ne peut pas être null.");
+        }
     }
 
     public function setStatus($status) {
@@ -40,11 +44,15 @@ class Transaction {
         if ($status !== null && in_array($status, $allowedStatuses, true)) {
             $this->status = $status;
         } else {
-            throw new InvalidArgumentException("Invalid status provided.");
+            throw new Exception("Statut invalide. Les statuts autorisés sont : 'pending', 'completed', 'cancelled'.");
         }
     }
 
     public function setCreatedAt($createdAt) {
-        $this->createdAt = $createdAt;
+        if ($createdAt instanceof DateTime || $createdAt === null) {
+            $this->createdAt = $createdAt ?? new DateTime();
+        } else {
+            throw new Exception("La date de création doit être une instance de DateTime ou null.");
+        }
     }
 }
