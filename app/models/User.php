@@ -14,7 +14,6 @@ class User{
     protected $updated_at;
     protected $errors = [];
     
-
     public function __construct($id = null, $fname = null, $lname = null, $email = null, $password = null, $role = null, $created_at = null, $updated_at = null) {
         try{
             $this->setId($id);
@@ -100,5 +99,11 @@ class User{
                 throw new InputException("Role must be 'admin', 'condicteur', 'expiditeur'.");
         }
         $this->role = $role;
+    }
+
+    public function getErrors(){
+        $errors = $this->errors;
+        $this->errors = [];
+        return $errors;
     }
 }
