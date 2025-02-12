@@ -25,7 +25,7 @@ CREATE TABLE Annonce (
     fromcity VARCHAR(255) NOT NULL,
     tocity VARCHAR(255) NOT NULL,
     datedepart TIMESTAMP NOT NULL,
-    createdAt TIMESTAMP NOT NULL,
+	createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	conducteur_id INT,
 	 FOREIGN KEY ( conducteur_id ) REFERENCES Users(id) on delete cascade on update cascade 
     
