@@ -8,13 +8,17 @@ class Evaluation{
        private $rate;
        private $comment;
        private  $createdAt;
+       protected $errors = [];
 
 
         public function __construct($id , $rate , $comment , $createdAt){
-            $this->setId($id);
+          try{  $this->setId($id);
             $this->setRate($rate);
             $this->setComment($comment);
             $this->createdAt = $createdAt;
+        }catch(InputException $e){
+            $this->errors[] = $e->getMessage();
+        }
         }
 
        //getter
@@ -67,5 +71,12 @@ class Evaluation{
         
         $this->comment = $comment;
     }
+
+    public function getErrors(){
+        $errors = $this->errors;
+        $this->errors = [];
+        return $errors;
+    }
+    
 }
     

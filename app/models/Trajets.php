@@ -6,13 +6,17 @@ class Trajet{
     private $id;
     private $city;
     private $order;
+    protected $errors = [];
+
 
     public function __construct( $id ,$city , $order){
-      $this->setCity($city);
+     try{ $this->setCity($city);
       $this->setOrder($order);
       $this->setId($id);
+    }catch(InputException $e){
+        $this->errors[] = $e->getMessage();
     }
-
+    }
 //getter
     public function getId(){
         return $this->id;
@@ -55,6 +59,12 @@ class Trajet{
             throw new InputException("The order must be a positive number.");
         }
         $this->order = $order;
+    }
+
+    public function getErrors(){
+        $errors = $this->errors;
+        $this->errors = [];
+        return $errors;
     }
 
 }
