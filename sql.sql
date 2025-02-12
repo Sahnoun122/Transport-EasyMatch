@@ -1,4 +1,5 @@
-database EasyMatch
+CREATE DATABASE EasyMatch;
+\c EasyMatch;
 
 CREATE TABLE Users (
     id SERIAL PRIMARY KEY,
@@ -7,8 +8,7 @@ CREATE TABLE Users (
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     role VARCHAR(50) NOT NULL CHECK (role IN ('conducteur', 'expediteur' , 'admin'))
-	
-	);
+);
 
 
 CREATE TABLE Conducteur (
@@ -27,8 +27,7 @@ CREATE TABLE Annonce (
     datedepart TIMESTAMP NOT NULL,
     createdAt TIMESTAMP NOT NULL,
 	conducteur_id INT,
-	 FOREIGN KEY ( conducteur_id ) REFERENCES Users(id) on delete cascade on update cascade 
-    
+	FOREIGN KEY ( conducteur_id ) REFERENCES Users(id) on delete cascade on update cascade
 );
 
 CREATE TABLE Demande (
@@ -41,12 +40,9 @@ CREATE TABLE Demande (
     depart VARCHAR(255) NOT NULL,
     destination VARCHAR(255) NOT NULL,
     expediteur_id INT,
-	annonce_id INT,
-    type_id INT;
-	FOREIGN KEY (expediteur_id) REFERENCES Users(id) on delete cascade on update cascade,
-	FOREIGN KEY (annonce_id) REFERENCES Annonce(id) on delete cascade on update cascade
-    FOREIGN KEY ( type_id) REFERENCES Type(id) on delete cascade on update cascade 
-
+    annonce_id INT,
+    FOREIGN KEY (expediteur_id) REFERENCES Users(id) on delete cascade on update cascade,
+    FOREIGN KEY (annonce_id) REFERENCES Annonce(id) on delete cascade on update cascade
 );
 
 
@@ -57,20 +53,20 @@ CREATE TABLE Evaluation (
     comment TEXT NOT NULL,
     createdAt TIMESTAMP NOT NULL,
 	annonce_id INT,
-	  FOREIGN KEY (annonce_id) REFERENCES Annonce(id) on delete cascade on update cascade 
+	FOREIGN KEY (annonce_id) REFERENCES Annonce(id) on delete cascade on update cascade 
 );
 
 CREATE TABLE Type (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-
+    demande_id INT ,
+    FOREIGN KEY (demande_id) REFERENCES Demande(id) on delete cascade on update cascade
 );
 
 CREATE TABLE Transaction (
     id_transaction int PRIMARY KEY,
     current_destination varchar(50),
 	createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    Statut VARCHAR(50) NOT NULL CHECK (Statut IN ('en cours',  'arrive')  ),
-
+    Statut VARCHAR(50) NOT NULL CHECK (Statut IN ('en cours', 'arrive')),
     FOREIGN KEY (id_transaction) REFERENCES Demande(id) on delete cascade on update cascade 
 );
