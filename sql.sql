@@ -1,5 +1,5 @@
 CREATE DATABASE EasyMatch;
-\c EasyMatch;
+
 
 CREATE TABLE Users (
     id SERIAL PRIMARY KEY,
@@ -15,24 +15,35 @@ CREATE TABLE Conducteur (
     id_conducteur int PRIMARY KEY,
     badged BOOLEAN NOT NULL,
     FOREIGN KEY (id_conducteur) REFERENCES Users(id) on delete cascade on update cascade 
+
 );
 
+CREATE TABLE Conducteur (
+    id_conducteur INT PRIMARY KEY,
+    badged BOOLEAN NOT NULL,
+    FOREIGN KEY (id_conducteur) REFERENCES Users(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
 
 CREATE TABLE Annonce (
     id SERIAL PRIMARY KEY,
     description TEXT NOT NULL,
-    Statut VARCHAR(50) NOT NULL CHECK (Statut IN ('Active',  'close')),
-    fromcity VARCHAR(255) NOT NULL,
-    tocity VARCHAR(255) NOT NULL,
-    datedepart TIMESTAMP NOT NULL,
-    createdAt TIMESTAMP NOT NULL,
-	conducteur_id INT,
-	FOREIGN KEY ( conducteur_id ) REFERENCES Users(id) on delete cascade on update cascade
+    statut VARCHAR(50) NOT NULL CHECK (statut IN ('Active', 'close')),
+    from_city VARCHAR(255) NOT NULL,
+    to_city VARCHAR(255) NOT NULL,
+    date_depart TIMESTAMP NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    conducteur_id INT,
+    FOREIGN KEY (conducteur_id) REFERENCES Users(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE Type (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Demande (
     id SERIAL PRIMARY KEY,
-    Statut VARCHAR(50) NOT NULL CHECK (Statut IN ('Soumis',  'Accepte',  'Refuse')),
+    statut VARCHAR(50) NOT NULL CHECK (statut IN ('Soumis', 'Accepte', 'Refuse')),
     longueur FLOAT NOT NULL,
     largeur FLOAT NOT NULL,
     hauteur FLOAT NOT NULL,
@@ -41,32 +52,25 @@ CREATE TABLE Demande (
     destination VARCHAR(255) NOT NULL,
     expediteur_id INT,
     annonce_id INT,
-    FOREIGN KEY (expediteur_id) REFERENCES Users(id) on delete cascade on update cascade,
-    FOREIGN KEY (annonce_id) REFERENCES Annonce(id) on delete cascade on update cascade
+    type_id INT,
+    FOREIGN KEY (expediteur_id) REFERENCES Users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (annonce_id) REFERENCES Annonce(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (type_id) REFERENCES Type(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
-
-
 
 CREATE TABLE Evaluation (
     id SERIAL PRIMARY KEY,
     rate INT NOT NULL,
     comment TEXT NOT NULL,
-    createdAt TIMESTAMP NOT NULL,
-	annonce_id INT,
-	FOREIGN KEY (annonce_id) REFERENCES Annonce(id) on delete cascade on update cascade 
-);
-
-CREATE TABLE Type (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    demande_id INT ,
-    FOREIGN KEY (demande_id) REFERENCES Demande(id) on delete cascade on update cascade
+    created_at TIMESTAMP NOT NULL,
+    annonce_id INT,
+    FOREIGN KEY (annonce_id) REFERENCES Annonce(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Transaction (
-    id_transaction int PRIMARY KEY,
-    current_destination varchar(50),
-	createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    Statut VARCHAR(50) NOT NULL CHECK (Statut IN ('en cours', 'arrive')),
-    FOREIGN KEY (id_transaction) REFERENCES Demande(id) on delete cascade on update cascade 
+    id_transaction INT PRIMARY KEY,
+    current_destination VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    statut VARCHAR(50) NOT NULL CHECK (statut IN ('en cours', 'arrive')),
+    FOREIGN KEY (id_transaction) REFERENCES Demande(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
