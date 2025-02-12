@@ -32,7 +32,7 @@ CREATE TABLE Annonce (
 
 CREATE TABLE Demande (
     id SERIAL PRIMARY KEY,
-    Statut VARCHAR(50) NOT NULL CHECK (Statut IN ('Soumis',  'Accepté',  'Refusé')),
+    Statut VARCHAR(50) NOT NULL CHECK (Statut IN ('Soumis',  'Accepte',  'Refuse')),
     longueur FLOAT NOT NULL,
     largeur FLOAT NOT NULL,
     hauteur FLOAT NOT NULL,
