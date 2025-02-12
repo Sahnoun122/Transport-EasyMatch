@@ -56,65 +56,44 @@
         </header>
 
         <!-- Stats Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="flex items-center justify-between">
-                    <h3 class="text-gray-500">Utilisateurs</h3>
-                    <span class="text-blue-500">👥</span>
-                </div>
-                <p class="text-2xl font-bold mt-2">1,259</p>
-                <p class="text-green-500 text-sm">+12% ce mois</p>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg ring-4  ring-opacity-40 max-w-sm">
+    <div class="relative">
+        <img class="w-full" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="Product Image">
+        <div class="absolute top-0 right-0 bg-green-500 text-white px-2 py-1 m-2 rounded-md text-sm font-medium">Active
+        </div>
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-medium mb-2">Product Title</h3>
+        <p class="text-gray-600 text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae ante
+            vel eros fermentum faucibus sit amet euismod lorem.</p>
+        <div class="flex items-center justify-between">
+            <span class="font-bold text-lg">$19.99</span>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                Buy Now
+            </button>
+        </div>
+    </div>
+</div>
 
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="flex items-center justify-between">
-                    <h3 class="text-gray-500">Annonces</h3>
-                    <span class="text-green-500">📦</span>
-                </div>
-                <p class="text-2xl font-bold mt-2">3,427</p>
-                <p class="text-green-500 text-sm">+8% ce mois</p>
-            </div>
-
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="flex items-center justify-between">
-                    <h3 class="text-gray-500">Transactions</h3>
-                    <div class="flex flex-col gap-2">
-                        <!-- <span class="text-green-500">💰</span> -->
-                        <!-- Double flèches parallèles opposées -->
-                        <div class="flex flex-col">
-                            <!-- Flèche du haut (vers la droite) -->
-                            <div class="flex items-center">
-                                <div class="h-0.5 w-3 bg-purple-500"></div>
-                                <div class="w-0 h-0 
-                        border-t-[3px] border-t-transparent 
-                        border-b-[3px] border-b-transparent 
-                        border-l-[5px] border-l-purple-500">
-                                </div>
-                            </div>
-                            <!-- Flèche du bas (vers la gauche) -->
-                            <div class="flex items-center flex-row-reverse">
-                                <div class="h-0.5 w-3 bg-purple-500"></div>
-                                <div class="w-0 h-0 
-                        border-t-[3px] border-t-transparent 
-                        border-b-[3px] border-b-transparent 
-                        border-r-[5px] border-r-purple-500">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p class="text-2xl font-bold mt-2">892</p>
-                <p class="text-green-500 text-sm">+23% ce mois</p>
-            </div>
-
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="flex items-center justify-between">
-                    <h3 class="text-gray-500">Évaluations</h3>
-                    <span class="text-yellow-500">⭐</span>
-                </div>
-                <p class="text-2xl font-bold mt-2">4.8/5</p>
-                <p class="text-green-500 text-sm">+0.2 ce mois</p>
-            </div>
+<div class="bg-white rounded-lg overflow-hidden shadow-lg ring-4 ring-opacity-40 max-w-sm">
+    <div class="relative">
+        <img class="w-full" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="Product Image">
+        <div class="absolute top-0 right-0 bg-green-500 text-white px-2 py-1 m-2 rounded-md text-sm font-medium">Active
+        </div>
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-medium mb-2">Product Title</h3>
+        <p class="text-gray-600 text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae ante
+            vel eros fermentum faucibus sit amet euismod lorem.</p>
+        <div class="flex items-center justify-between">
+            <span class="font-bold text-lg">$19.99</span>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                Buy Now
+            </button>
+        </div>
+    </div>
+</div>
         </div>
 
         <!-- Charts Section -->

@@ -6,6 +6,7 @@ use Core\View;
 
 class ExpiditeurController{
     public function dashboard(){
+        
         return View::make('expediteur/dashbord');
     }
 }
