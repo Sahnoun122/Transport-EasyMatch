@@ -33,17 +33,20 @@ CREATE TABLE Annonce (
 
 CREATE TABLE Demande (
     id SERIAL PRIMARY KEY,
-    Statut VARCHAR(50) NOT NULL CHECK (Statut IN ('Soumis',  'Accepté',  'Refusé')),
+    Statut VARCHAR(50) NOT NULL CHECK (Statut IN ('Soumis',  'Accepte',  'Refuse')),
     longueur FLOAT NOT NULL,
     largeur FLOAT NOT NULL,
     hauteur FLOAT NOT NULL,
     poids FLOAT NOT NULL,
     depart VARCHAR(255) NOT NULL,
     destination VARCHAR(255) NOT NULL,
-      expediteur_id INT,
-	   annonce_id INT,
-	   FOREIGN KEY (expediteur_id) REFERENCES Users(id) on delete cascade on update cascade,
-	   	FOREIGN KEY (annonce_id) REFERENCES Annonce(id) on delete cascade on update cascade
+    expediteur_id INT,
+	annonce_id INT,
+    type_id INT;
+	FOREIGN KEY (expediteur_id) REFERENCES Users(id) on delete cascade on update cascade,
+	FOREIGN KEY (annonce_id) REFERENCES Annonce(id) on delete cascade on update cascade
+    FOREIGN KEY ( type_id) REFERENCES Type(id) on delete cascade on update cascade 
+
 );
 
 
@@ -60,8 +63,6 @@ CREATE TABLE Evaluation (
 CREATE TABLE Type (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    demande_id INT ,
-    FOREIGN KEY (  demande_id) REFERENCES Demande(id) on delete cascade on update cascade 
 
 );
 
