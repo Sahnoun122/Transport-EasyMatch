@@ -1,22 +1,36 @@
 <?php
 
-namespace  app\models;
+namespace  App\Models;
+
+use  App\Exceptions\InputException;
 
 class Type
 {
     private  int  $id;
     private String  $name;
-    public function  __construct() {}
-    public function  setId($id)
+    private $errors = [];
+    public function  __construct($id = null, $name = null)
     {
-        if (is_int($id) && $id > 0)
-            $this->id = $id;
+        try {
+            $this->setId($id);
+            $this->setName($name);
+        } catch (InputException $e) {
+            $this->errors[] = $e->getMessage();
+        }
+    }
+    public function setId($id)
+    {
+        if (!is_int($id) || $id <= 0) {
+            throw new InputException("Invalid ID");
+        }
+        $this->id = $id;
     }
     public function  setName($name)
     {
-        if (preg_match('/^[a-zA-Z\s]{3,50}$/', $name)) {
-            $this->name = $name;
-        }
+        if ($name != null)
+            if (!preg_match('/^[a-zA-Z\s]{3,50}$/', $name))
+                throw new InputException("Invalid Name");
+        $this->name = $name;
     }
     public function  getId()
     {
