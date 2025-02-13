@@ -4,7 +4,7 @@ require_once './../vendor/autoload.php';
 require __DIR__.'/../app/config/environment.php';
 
 use App\Exceptions\RouteNotFoundException;
-use App\Controllers\ExpiditeurController;
+use App\Controllers\DemandeController;
 
 
 use App\Middlewares\AuthMiddleware;
@@ -15,7 +15,7 @@ $router
 ->get('/', function(){
     return 'Hello world';
 })
-->get('/expiditeur/dashboard', [ExpiditeurController::class, 'Dashboard']);
+->get('/expiditeur/dashboard', [DemandeController::class, 'Dashboard']);
 
 
 try{

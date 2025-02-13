@@ -6,7 +6,7 @@ use App\Services\DemandeService;
 use App\Services\AuthService;
 use Core\View;
 
-class ExpiditeurController{
+class DemandeController{
     private DemandeService $DemandeService;
 
     public function __construct(){

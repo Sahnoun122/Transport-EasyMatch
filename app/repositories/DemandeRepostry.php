@@ -1,17 +1,11 @@
 <?php
 
 namespace App\Repositories;
-
 use App\Models\Demande;
-
 use Core\Database;
 use PDO;
 use PDOException;
 use Core\Logger;
-
-
-
-
 class DemandeRepository {
     private PDO $db;
 
@@ -33,7 +27,6 @@ class DemandeRepository {
     }
    
     public function DemandeAnnonce( Demande $demande){
-         
         try{
             $query = 'INSERT INTO reservation(expediteur_id, annonce_id,type_id , longueur,largeur, hauteur, poids, depart,destination  , statut) 
             VALUES(:expediteur_id, :annonce_id, :type_id ,:longueur , :largeur ,:hauteur ,:poids ,:depart ,:destination , :statut)';
@@ -51,7 +44,6 @@ class DemandeRepository {
             if($stmt->execute()){
                 return true;
             }
-
          return false;
         }catch(PDOException $e){
             Logger::error_log($e->getMessage());
