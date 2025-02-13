@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -57,30 +56,30 @@
 
         <!-- Stats Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
-<div class="container">
-    <?php if (!empty($this->params['statistics'])): ?>
-        <?php foreach ($this->params['statistics'] as $annonce): ?>
-            <div class="bg-white rounded-lg overflow-hidden shadow-lg ring-4 ring-opacity-40 max-w-sm">
-            <div class="relative">
-        <img class="w-full" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="Product Image">
-        <div class="absolute top-0 right-0 bg-green-500 text-white px-2 py-1 m-2 rounded-md text-sm font-medium">Active
-        </div>
-    </div>
-                <div class="relative">
-                    <div class=""></div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-medium mb-2"><?= htmlspecialchars($annonce['description']) ?></h3>
-                    <p class="text-gray-600 text-sm mb-4">From: <?= htmlspecialchars($annonce['from_city']) ?> To: <?= htmlspecialchars($annonce['to_city']) ?></p>
-                    <p class="text-gray-600 text-sm mb-4">Date: <?= htmlspecialchars($annonce['date_depart']) ?></p>
-                    <p class="text-gray-600 text-sm mb-4">Created At: <?= htmlspecialchars($annonce['created_at']) ?></p>
-                </div>
+            <div class="container">
+                <?php if (!empty($this->params['statistics'])): ?>
+                    <?php foreach ($this->params['statistics'] as $annonce): ?>
+                        <div class="bg-white rounded-lg overflow-hidden shadow-lg ring-4 ring-opacity-40 max-w-sm">
+                            <div class="relative">
+                                <img class="w-full" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="Product Image">
+                                <div class="absolute top-0 right-0 bg-green-500 text-white px-2 py-1 m-2 rounded-md text-sm font-medium">Active
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <div class=""></div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-lg font-medium mb-2"><?= htmlspecialchars($annonce['description']) ?></h3>
+                                <p class="text-gray-600 text-sm mb-4">From: <?= htmlspecialchars($annonce['from_city']) ?> To: <?= htmlspecialchars($annonce['to_city']) ?></p>
+                                <p class="text-gray-600 text-sm mb-4">Date: <?= htmlspecialchars($annonce['date_depart']) ?></p>
+                                <p class="text-gray-600 text-sm mb-4">Created At: <?= htmlspecialchars($annonce['created_at']) ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>No active annonces found.</p>
+                <?php endif; ?>
             </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>No active annonces found.</p>
-    <?php endif; ?>
-</div>
 
 
         </div>
