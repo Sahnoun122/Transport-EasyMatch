@@ -3,6 +3,7 @@
 namespace App\Services;
 use App\Repositories\DemandeRepository;
 use App\Exceptions\InputException;
+use App\Models\Demande;
 
 class DemandeService{
     private  DemandeRepository $repository;
@@ -16,16 +17,10 @@ class DemandeService{
         return $this->repository->afficherAnnonce($conducteur_id);
     }
 
-    // public function createAnnonce( $id_expediteur){
-    //     try{
-    //         $demande = new Demande( $_SESSION['user_id'], $id_expediteur);
-    //         if($this->repository->createAnnonce($demande)){
-    //             return ['success' => true];
-    //         }
 
-    //         return ['success' => false, 'errors' => ['Something went wrong please try again later !']];
-    //     }catch(InputException $e){
-    //         return ['success' => false, 'errors' => [$e->getMessage()]];
-    //     }
-    // }
+    public function createDemande(Demande $data) {
+        $data['statut'] = 'Soumis'; 
+
+        return $this->repository->insertDemande($data);
+    }
 }

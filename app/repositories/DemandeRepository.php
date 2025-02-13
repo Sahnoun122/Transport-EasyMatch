@@ -25,32 +25,33 @@ class DemandeRepository {
             return [];
         }
     }
-   
-    // public function DemandeAnnonce(Demande $demande){
-    //     try{
-    //         $query = 'INSERT INTO reservation(expediteur_id, annonce_id,type_id , longueur,largeur, hauteur, poids, depart,destination  , statut) 
-    //         VALUES(:expediteur_id, :annonce_id, :type_id ,:longueur , :largeur ,:hauteur ,:poids ,:depart ,:destination , :statut)';
-    //         $stmt = $this->db->prepare($query);
-    //         $stmt->bindValue(':expediteur_id', $demande->getIdexpediteur(), PDO::PARAM_INT);
-    //         $stmt->bindValue(':annonce_id', $demande->getIdannonce(), PDO::PARAM_INT);
-    //         $stmt->bindValue(':type_id', $demande->getIdtype(), PDO::PARAM_STR);
-    //         $stmt->bindValue(':longueur', $demande->getStatus(), PDO::PARAM_STR);
-    //         $stmt->bindValue(':largeur', $demande->getStatus(), PDO::PARAM_STR);
-    //         $stmt->bindValue(':hauteur', $demande->getStatus(), PDO::PARAM_STR);
-    //         $stmt->bindValue(':poids', $demande->getStatus(), PDO::PARAM_STR);
-    //         $stmt->bindValue(':depart', $demande->getStatus(), PDO::PARAM_STR);
-    //         $stmt->bindValue(':statut', $demande->getStatus(), PDO::PARAM_STR);
 
-    //         if($stmt->execute()){
-    //             return true;
-    //         }
-    //      return false;
-    //     }catch(PDOException $e){
-    //         Logger::error_log($e->getMessage());
-    //         return false;
-    //     }
-    // }
+    public function insertDemande(Demande $data){
+        try {
+            $query = 'INSERT INTO Demande (expediteur_id, annonce_id, type_id, longueur, largeur, hauteur, poids, depart, destination, statut) 
+                      VALUES (:expediteur_id, :annonce_id, :type_id, :longueur, :largeur, :hauteur, :poids, :depart, :destination, :statut)';
+            $stmt = $this->db->prepare($query);
+
+            $stmt->bindValue(':expediteur_id', $data['expediteur_id'], PDO::PARAM_INT);
+            $stmt->bindValue(':annonce_id', $data['annonce_id'], PDO::PARAM_INT);
+            $stmt->bindValue(':type_id', $data['type_id'], PDO::PARAM_INT);
+            $stmt->bindValue(':longueur', $data->getLongueur(), PDO::PARAM_STR);
+            $stmt->bindValue(':largeur', $data->getLargeur(), PDO::PARAM_STR);
+            $stmt->bindValue(':hauteur', $data->getHauteur() , PDO::PARAM_STR);
+            $stmt->bindValue(':poids', $data-> getPoids(), PDO::PARAM_STR);
+            $stmt->bindValue(':depart', $data->getDepart(), PDO::PARAM_STR);
+            $stmt->bindValue(':destination', $data->getDestination(), PDO::PARAM_STR);
+            $stmt->bindValue(':statut', $data->getStatus(), PDO::PARAM_STR);
+
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            error_log($e->getMessage());
+            return false;
+        }
     }
+}
+
+
     
     
 
