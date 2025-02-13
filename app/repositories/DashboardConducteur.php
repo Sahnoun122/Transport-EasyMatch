@@ -14,14 +14,25 @@ class DashboardCondecteur {
         $this->db = Database::getInstance()->getConnection();
     }
 
-    public function accepterannonce($id){
+    public function accepterdemande($id){
         try {
-            $sql = "UPDATE Annonce SET  Statut = 'Accepté' WHERE id = :id";
+            $sql = "UPDATE Annonce SET  Statut = 'Accepte' WHERE id = :id";
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt->execute();
         } catch (PDOException $e) {
             return "Erreur lors de la confirmation demande : ". $e->getMessage();
+        }
+    }
+    
+    public function refusedemande( $id){
+        try {
+            $sql = "UPDATE Annonce SET  Statut = 'Refuse' WHERE id = :id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            return "Erreur lors de la Refuse demande : ". $e->getMessage();
         }
     }
     
