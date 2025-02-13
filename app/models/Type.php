@@ -40,4 +40,9 @@ class Type
     {
         return $this->name;
     }
+    public function getErrors(){
+        $errors = $this->errors;
+        $this->errors = [];
+        return $errors;
+    }
 }
