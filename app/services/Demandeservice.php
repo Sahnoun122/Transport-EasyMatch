@@ -29,7 +29,8 @@ class DemandeService{
                 $request['hauteur'], 
                 $request['poids'], 
                 $request['depart'], 
-                $request['destination'] 
+                $request['destination'] ,
+                $request['type_id'] 
             );
             if ($this->repository->insertDemande($demande)) {
                 return ['success' => true];

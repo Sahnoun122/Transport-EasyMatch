@@ -70,7 +70,7 @@
                     <div class=""></div>
                     <?php
 // Exemple : Récupérer l'ID de l'annonce
- echo $annonce_id = 1; // Remplacez ceci par la logique pour récupérer l'ID de l'annonce
+$annonce_id = 1; // Remplacez ceci par la logique pour récupérer l'ID de l'annonce
 
 // Vérifier si la variable est définie
 if (!isset($annonce_id)) {
@@ -151,6 +151,8 @@ if (!isset($annonce_id)) {
 
     <!-- Champ caché pour l'ID de l'annonce -->
     <input type="hidden" name="annonce_id" value="<?php echo $annonce_id; ?>">
+    <input type="hidden" name="type_id" value="<?php echo $type_id; ?>">
+
 
     <!-- Bouton de soumission -->
     <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
