@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EasyMatch Transport - Admin Dashboard</title>
+    <title>EasyMatch Transport </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.7.0/chart.min.js"></script>
 </head>
@@ -23,11 +24,11 @@
         <div class="p-4">
             <h2 class="text-2xl font-bold mb-6">EasyMatch Admin</h2>
             <nav>
-                <a href="dashboard.php" class="block py-2 px-4 bg-gray-700 rounded mb-2">Tableau de bord</a>
-                <a href="utilisateurs.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Utilisateurs</a>
-                <a href="anonces.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Annonces</a>
-                <a href="transactions.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Transactions</a>
-                <a href="evaluations.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Évaluations</a>
+                <a href="#" class="block py-2 px-4 bg-gray-700 rounded mb-2">Tableau de bord</a>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Utilisateurs</a>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Annonces</a>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Transactions</a>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Évaluations</a>
             </nav>
         </div>
     </aside>
@@ -55,75 +56,34 @@
         </header>
 
         <!-- Stats Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-            <a href="utilisateurs.php">
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-gray-500">Utilisateurs</h3>
-                        <span class="text-blue-500">👥</span>
-                    </div>
-                    <p class="text-2xl font-bold mt-2">1,259</p>
-                    <p class="text-green-500 text-sm">+12% ce mois</p>
-                </div>
-            </a>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
 
-            <a href="anonces.php">
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-gray-500">Annonces</h3>
-                        <span class="text-green-500">📦</span>
-                    </div>
-                    <p class="text-2xl font-bold mt-2">3,427</p>
-                    <p class="text-green-500 text-sm">+8% ce mois</p>
-                </div>
-            </a>
 
-            <a href="transactions.php">
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-gray-500">Transactions</h3>
-                        <div class="flex flex-col gap-2">
-                            <!-- <span class="text-green-500">💰</span> -->
-                            <!-- Double flèches parallèles opposées -->
-                            <div class="flex flex-col">
-                                <!-- Flèche du haut (vers la droite) -->
-                                <div class="flex items-center">
-                                    <div class="h-0.5 w-3 bg-purple-500"></div>
-                                    <div class="w-0 h-0 
-                        border-t-[3px] border-t-transparent 
-                        border-b-[3px] border-b-transparent 
-                        border-l-[5px] border-l-purple-500">
-                                    </div>
-                                </div>
-                                <!-- Flèche du bas (vers la gauche) -->
-                                <div class="flex items-center flex-row-reverse">
-                                    <div class="h-0.5 w-3 bg-purple-500"></div>
-                                    <div class="w-0 h-0 
-                        border-t-[3px] border-t-transparent 
-                        border-b-[3px] border-b-transparent 
-                        border-r-[5px] border-r-purple-500">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-2xl font-bold mt-2">892</p>
-                    <p class="text-green-500 text-sm">+23% ce mois</p>
-                </div>
-            </a>
-
-            <a href="evaluations.php">
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-gray-500">Évaluations</h3>
-                        <span class="text-yellow-500">⭐</span>
-                    </div>
-                    <p class="text-2xl font-bold mt-2">4.8/5</p>
-                    <p class="text-green-500 text-sm">+0.2 ce mois</p>
-                </div>
-            </a>
+<div class="container">
+    <?php if (!empty($this->params['statistics'])): ?>
+        <?php foreach ($this->params['statistics'] as $annonce): ?>
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg ring-4 ring-opacity-40 max-w-sm">
+            <div class="relative">
+        <img class="w-full" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="Product Image">
+        <div class="absolute top-0 right-0 bg-green-500 text-white px-2 py-1 m-2 rounded-md text-sm font-medium">Active
         </div>
-
+    </div>
+                <div class="relative">
+                    <div class=""></div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-medium mb-2"><?= htmlspecialchars($annonce['description']) ?></h3>
+                    <p class="text-gray-600 text-sm mb-4">From: <?= htmlspecialchars($annonce['from_city']) ?> To: <?= htmlspecialchars($annonce['to_city']) ?></p>
+                    <p class="text-gray-600 text-sm mb-4">Date: <?= htmlspecialchars($annonce['date_depart']) ?></p>
+                    <p class="text-gray-600 text-sm mb-4">Created At: <?= htmlspecialchars($annonce['created_at']) ?></p>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>No active annonces found.</p>
+    <?php endif; ?>
+</div>
+        </div>
         <!-- Charts Section -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
             <div class="bg-white p-6 rounded-lg shadow">
