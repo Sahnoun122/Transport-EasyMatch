@@ -13,10 +13,12 @@ class AuthMiddleware implements IMiddleware{
 
         if($params != null){
             if($_SESSION['user_role'] != $params){
-                if($_SESSION['user_role'] == 'doctor')
-                    header('Location: /doctor/dashboard');
+                if($_SESSION['user_role'] == 'admin')
+                    header('Location: /admin/dashboard');
+                else if($_SESSION['user_role'] == 'conducteur')
+                    header('Location: /conducteur/dashboard');
                 else
-                    header('Location: /patient/profile');
+                    header('Location: /expiditeur/history');
                 exit;
             }
         }

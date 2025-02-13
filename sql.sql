@@ -1,4 +1,4 @@
-database EasyMatch
+CREATE DATABASE EasyMatch;
 
 
 CREATE TABLE Users (
@@ -7,7 +7,15 @@ CREATE TABLE Users (
     lname VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    role VARCHAR(50) NOT NULL CHECK (role IN ('conducteur', 'expediteur', 'admin'))
+    role VARCHAR(50) NOT NULL CHECK (role IN ('conducteur', 'expediteur' , 'admin'))
+);
+
+
+CREATE TABLE Conducteur (
+    id_conducteur int PRIMARY KEY,
+    badged BOOLEAN NOT NULL,
+    FOREIGN KEY (id_conducteur) REFERENCES Users(id) on delete cascade on update cascade 
+
 );
 
 CREATE TABLE Conducteur (
