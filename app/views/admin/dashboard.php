@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.7.0/chart.min.js"></script>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 select-none">
     <!-- Menu Burger pour mobile -->
     <button id="menuButton" class="lg:hidden fixed top-4 left-4 z-50 p-2 bg-gray-800 text-white rounded">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

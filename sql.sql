@@ -8,7 +8,7 @@ CREATE TABLE Users (
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     role VARCHAR(50) NOT NULL CHECK (role IN ('conducteur', 'expediteur' , 'admin')),
-    is_suspend BOOLEAN DEFAULT 0
+    is_suspend INT DEFAULT 0
 );
 
 
