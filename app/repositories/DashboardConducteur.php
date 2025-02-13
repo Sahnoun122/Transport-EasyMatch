@@ -39,13 +39,14 @@ class DashboardCondecteur {
             }
         }
   
+
+
     
-    public function accepterdemande($id , $statut ){
+    public function accepterdemande($id  ){
         try {
             $sql = "UPDATE Annonce SET  Statut = 'Accepte' WHERE id = :id";
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-            $stmt->bindParam(":id",  $statut , PDO::PARAM_INT);
 
             $stmt->execute();
         } catch (PDOException $e) {

@@ -11,10 +11,24 @@ class ConducteurService{
         $this->repository = new DashboardCondecteur();
     }
 
+    public function statistics(){
+        return [
+            $this->repository->getDemandeDetails(),
+        ];
+    }
+
   
-    public function updateReservationStatus($id, $status){
+    public function accepterdemande($id){
         try{
-            return $this->repository->updateReservationStatus($id, $status);
+            return $this->repository->accepterdemande($id);
+        }catch(\Exception $e){
+            return false;
+        }
+    }
+    
+    public function refusedemande($id){
+        try{
+            return $this->repository->refusedemande($id);
         }catch(\Exception $e){
             return false;
         }
