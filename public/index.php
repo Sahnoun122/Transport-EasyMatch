@@ -18,7 +18,7 @@ $router
     return 'Hello world';
 })
 ->get('/expiditeur/dashboard', [DemandeController::class, 'Dashboard'])
-->post('/expiditeur/dashboard{id_expiditeur}', [DemandeController::class, 'createAnnonce']);
+->post('/expiditeur/dashboard{id_expiditeur}', [DemandeController::class, 'createDemande']);
 
 try{
     echo $router->resolve($_SERVER['REQUEST_URI'], strtolower($_SERVER['REQUEST_METHOD']));
