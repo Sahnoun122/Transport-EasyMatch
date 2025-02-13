@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -24,11 +23,11 @@
         <div class="p-4">
             <h2 class="text-2xl font-bold mb-6">EasyMatch Admin</h2>
             <nav>
-                <a href="#" class="block py-2 px-4 bg-gray-700 rounded mb-2">Tableau de bord</a>
-                <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Utilisateurs</a>
-                <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Annonces</a>
-                <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Transactions</a>
-                <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Évaluations</a>
+                <a href="dashboard.php" class="block py-2 px-4 bg-gray-700 rounded mb-2">Tableau de bord</a>
+                <a href="utilisateurs.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Utilisateurs</a>
+                <a href="anonces.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Annonces</a>
+                <a href="transactions.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Transactions</a>
+                <a href="evaluations.php" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Évaluations</a>
             </nav>
         </div>
     </aside>
@@ -57,64 +56,72 @@
 
         <!-- Stats Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="flex items-center justify-between">
-                    <h3 class="text-gray-500">Utilisateurs</h3>
-                    <span class="text-blue-500">👥</span>
+            <a href="utilisateurs.php">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-gray-500">Utilisateurs</h3>
+                        <span class="text-blue-500">👥</span>
+                    </div>
+                    <p class="text-2xl font-bold mt-2">1,259</p>
+                    <p class="text-green-500 text-sm">+12% ce mois</p>
                 </div>
-                <p class="text-2xl font-bold mt-2">1,259</p>
-                <p class="text-green-500 text-sm">+12% ce mois</p>
-            </div>
+            </a>
 
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="flex items-center justify-between">
-                    <h3 class="text-gray-500">Annonces</h3>
-                    <span class="text-green-500">📦</span>
+            <a href="anonces.php">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-gray-500">Annonces</h3>
+                        <span class="text-green-500">📦</span>
+                    </div>
+                    <p class="text-2xl font-bold mt-2">3,427</p>
+                    <p class="text-green-500 text-sm">+8% ce mois</p>
                 </div>
-                <p class="text-2xl font-bold mt-2">3,427</p>
-                <p class="text-green-500 text-sm">+8% ce mois</p>
-            </div>
+            </a>
 
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="flex items-center justify-between">
-                    <h3 class="text-gray-500">Transactions</h3>
-                    <div class="flex flex-col gap-2">
-                        <!-- <span class="text-green-500">💰</span> -->
-                        <!-- Double flèches parallèles opposées -->
-                        <div class="flex flex-col">
-                            <!-- Flèche du haut (vers la droite) -->
-                            <div class="flex items-center">
-                                <div class="h-0.5 w-3 bg-purple-500"></div>
-                                <div class="w-0 h-0 
+            <a href="transactions.php">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-gray-500">Transactions</h3>
+                        <div class="flex flex-col gap-2">
+                            <!-- <span class="text-green-500">💰</span> -->
+                            <!-- Double flèches parallèles opposées -->
+                            <div class="flex flex-col">
+                                <!-- Flèche du haut (vers la droite) -->
+                                <div class="flex items-center">
+                                    <div class="h-0.5 w-3 bg-purple-500"></div>
+                                    <div class="w-0 h-0 
                         border-t-[3px] border-t-transparent 
                         border-b-[3px] border-b-transparent 
                         border-l-[5px] border-l-purple-500">
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Flèche du bas (vers la gauche) -->
-                            <div class="flex items-center flex-row-reverse">
-                                <div class="h-0.5 w-3 bg-purple-500"></div>
-                                <div class="w-0 h-0 
+                                <!-- Flèche du bas (vers la gauche) -->
+                                <div class="flex items-center flex-row-reverse">
+                                    <div class="h-0.5 w-3 bg-purple-500"></div>
+                                    <div class="w-0 h-0 
                         border-t-[3px] border-t-transparent 
                         border-b-[3px] border-b-transparent 
                         border-r-[5px] border-r-purple-500">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <p class="text-2xl font-bold mt-2">892</p>
+                    <p class="text-green-500 text-sm">+23% ce mois</p>
                 </div>
-                <p class="text-2xl font-bold mt-2">892</p>
-                <p class="text-green-500 text-sm">+23% ce mois</p>
-            </div>
+            </a>
 
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="flex items-center justify-between">
-                    <h3 class="text-gray-500">Évaluations</h3>
-                    <span class="text-yellow-500">⭐</span>
+            <a href="evaluations.php">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-gray-500">Évaluations</h3>
+                        <span class="text-yellow-500">⭐</span>
+                    </div>
+                    <p class="text-2xl font-bold mt-2">4.8/5</p>
+                    <p class="text-green-500 text-sm">+0.2 ce mois</p>
                 </div>
-                <p class="text-2xl font-bold mt-2">4.8/5</p>
-                <p class="text-green-500 text-sm">+0.2 ce mois</p>
-            </div>
+            </a>
         </div>
 
         <!-- Charts Section -->
