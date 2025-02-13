@@ -55,30 +55,40 @@
             </div>
         </header>
 <!-- Main -->
-<div class="p-8 sm:ml-80">
 
-    <h2 class="text-4xl font-semibold text-black mb-6">Reservations</h2>
+<div class="p-8 sm:ml-80">
+    <h2 class="text-4xl font-semibold text-black mb-6">Demandes</h2>
     <div class="flex items-center justify-center overflow-x-auto shadow-lg rounded-lg" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
         <table class="min-w-full table-auto border-collapse bg-white">
             <thead class="bg-black">
                 <tr>
-                    <th class="px-6 py-3 text-left text-sm font-medium text-white">Member</th>
-                    <th class="px-6 py-3 text-left text-sm font-medium text-white">Activity</th>
-                    <th class="px-6 py-3 text-left text-sm font-medium text-white">Reservation Date</th>
-                    <th class="px-6 py-3 text-left text-sm font-medium text-white">Status</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-white">Expéditeur</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-white">Type</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-white">Longueur</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-white">Largeur</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-white">Hauteur</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-white">Poids</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-white">Départ</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-white">Destination</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-white">Statut</th>
                     <th class="px-6 py-3 text-left text-sm font-medium text-white">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($reservations as $reservation): ?>
+                <?php foreach ($Consulter as $demande): ?>
                     <tr class="border-b hover:bg-gray-50">
-                        <td class="px-6 py-4 text-sm"><?php echo $reservation['MemberName']; ?></td>
-                        <td class="px-6 py-4 text-sm"><?php echo $reservation['ActivityName']; ?></td>
-                        <td class="px-6 py-4 text-sm"><?php echo $reservation['ResDate']; ?></td>
-                        <td class="px-6 py-4 text-sm"><?php echo $reservation['Status']; ?></td>
+                        <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['expediteur_name']) ?></td>
+                        <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['type_name']) ?></td>
+                        <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['longueur']) ?></td>
+                        <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['largeur']) ?></td>
+                        <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['hauteur']) ?></td>
+                        <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['poids']) ?></td>
+                        <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['depart']) ?></td>
+                        <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['destination']) ?></td>
+                        <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['statut']) ?></td>
                         <td class="px-6 py-4">
-                            <form method="POST" action="" class="flex space-x-2">
-                                <input type="hidden" name="reservation_id" value="<?php echo $reservation['ResID']; ?>">
+                            <form method="POST" action="/conducteur/demande/action" class="flex space-x-2">
+                                <input type="hidden" name="demande_id" value="<?= $demande['id'] ?>">
                                 <button name="action" value="accept" class="text-xl hover:scale-105">✅</button>
                                 <button name="action" value="reject" class="text-xl hover:scale-105">❌</button>
                             </form>
@@ -89,7 +99,6 @@
         </table>
     </div>
 
-</div>
 </div>
     </main>
 

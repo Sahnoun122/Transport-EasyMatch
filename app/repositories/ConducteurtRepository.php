@@ -71,4 +71,31 @@ class ConducteurtRepository
             return "Erreur lors de la Refuse demande : " . $e->getMessage();
         }
     }
+
+
+    public function getDemandeById($id)
+    {
+        try {
+            $query = "
+                SELECT
+                    d.*,
+                    u.email AS expediteur_email,
+                    u.fname AS expediteur_name
+                FROM
+                    Demande d
+                JOIN
+                    Users u ON d.expediteur_id = u.id
+                WHERE
+                    d.id = :id
+            ";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            Logger::error_log($e->getMessage());
+            return null;
+        }
+    }
+    
 }

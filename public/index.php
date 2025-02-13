@@ -22,7 +22,8 @@ $router
 
 ->get('/expiditeur/dashboard', [DemandeController::class, 'Dashboard'])
 ->post('/expiditeur/dashboard{id_expiditeur}', [DemandeController::class, 'createDemande'])
-->get('/conducteur/dashbordconsulter', [ConducteurControllers::class, 'Consulter']);
+->get('/conducteur/dashbordconsulter', [ConducteurControllers::class, 'Consulter'])
+->post('/conducteur/demande/action', [ConducteurControllers::class, 'actionDemande']);;
 
 try{
     echo $router->resolve($_SERVER['REQUEST_URI'], strtolower($_SERVER['REQUEST_METHOD']));

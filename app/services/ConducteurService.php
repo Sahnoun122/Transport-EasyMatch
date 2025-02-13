@@ -13,7 +13,7 @@ class ConducteurService{
     public function __construct(){
         $this->repository = new ConducteurtRepository();
     }
-
+    
 
     public function Consulter(){
 
@@ -31,6 +31,14 @@ class ConducteurService{
     public function refusedemande($id){
         try{
             return $this->repository->refusedemande($id);
+        }catch(\Exception $e){
+            return false;
+        }
+    }
+
+    public function getDemandeById($id){
+        try{
+            return $this->repository->getDemandeById($id);
         }catch(\Exception $e){
             return false;
         }
