@@ -143,30 +143,35 @@
                 </div>
             </div>
 
-            <div class="space-y-4">
-                <!-- Avis individuel -->
-                <div class="border rounded-lg p-4">
-                    <div class="flex justify-between items-start">
-                        <div class="flex items-start">
-                            <img src="/api/placeholder/40/40" alt="" class="w-10 h-10 rounded-full mr-3">
-                            <div>
-                                <div class="font-medium">Pierre Durand</div>
-                                <div class="text-sm text-gray-500">12 février 2024</div>
-                                <div class="flex items-center mt-1">
-                                    ⭐⭐⭐⭐⭐
-                                </div>
-                                <p class="mt-2">Excellent service, conducteur très professionnel et ponctuel. Je recommande !</p>
+            <table class="w-full border-collapse">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="p-3 text-left">Date</th>
+                        <th class="p-3 text-left">Évaluation</th>
+                        <th class="p-3 text-left">Commentaire</th>
+                        <th class="p-3 text-left">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b">
+                        <td class="p-3 text-sm text-gray-500">12 février 2024</td>
+                        <td class="p-3">
+                            <div class="flex items-center">
+                                ⭐⭐⭐⭐⭐
                             </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="text-green-600 hover:text-green-800">Approuver</button>
-                            <button class="text-red-600 hover:text-red-800">Supprimer</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Plus d'avis... -->
-            </div>
+                        </td>
+                        <td class="p-3">
+                            <p>Excellent service, conducteur très professionnel et ponctuel. Je recommande !</p>
+                        </td>
+                        <td class="p-3">
+                            <div class="flex space-x-2">
+                                <button class="text-green-600 hover:text-green-800">Approuver</button>
+                                <button class="text-red-600 hover:text-red-800">Supprimer</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </main>
 
