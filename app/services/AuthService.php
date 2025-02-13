@@ -59,5 +59,42 @@ class AuthService{
         }
     }
 
-    
+    public function login($request){
+        $errors = [];
+        $nullvalue = false;
+
+        if(!isset($request['email']) || empty($request['email'])){
+            $errors[] = 'Email is required !';
+            $nullvalue = true;
+        }
+        
+        if(!isset($request['password']) || empty($request['password'])){
+            $errors[] = 'Password is required !';
+            $nullvalue = true;
+        }
+
+        if($nullvalue)
+            return ['success' => false, 'errors' => $errors];   
+
+        try{
+            $user = new User(null, null, null, $request['email'], $request['password']);
+            $result = $this->repository->getUserByEmailOrId($request['email']);
+            if($result){
+                //email found
+                if(password_verify($request['password'], $result['password'])){
+                    //correct password
+                    $_SESSION['user_id'] = $result['id'];
+                    $_SESSION['user_role'] = $result['role'];
+                    return ['success' => true];
+                }else{
+                    //wrong password
+                    return ['success' => false, 'errors' => ['Wrong password']];
+                }
+            }
+
+            return ['success' => false, 'errors' => ['Email doesn\'t exist !']];
+        }catch(InputException $e){
+            return ['success' => false, 'errors' => [$e->getMessage()]];
+        }
+    }    
 }
