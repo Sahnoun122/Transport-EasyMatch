@@ -21,7 +21,7 @@ class EvaluationRepository {
             $stmt = $this->db->prepare($query);
             $stmt->execute();
 
-            return $stmt->fetchAll() ?? [];
+            return $stmt->fetchAll(PDO::FETCH_ASSOC) ?? [];
         } catch (PDOException $e) {
             Logger::error_log($e->getMessage());
             return [];
