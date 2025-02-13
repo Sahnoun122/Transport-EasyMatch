@@ -22,4 +22,5 @@ class DemandeController
         $statistics = $this->repository->statistics();
         return View::make('expediteur/dashborddemande', ['statistics' => $statistics]);
     }
+    
 }
