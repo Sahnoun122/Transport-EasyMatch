@@ -1,4 +1,9 @@
-<?php 
+<?php
+
+namespace App\Models;
+
+use App\Exceptions\InputException;
+
 class Conducteur extends User {
     private bool $badged;
 
@@ -12,12 +17,19 @@ class Conducteur extends User {
         bool $badged
     ) {
         parent::__construct($id, $fname, $lname, $email, $password, $role);
-        $this->badged = $badged;
+        $this->setBadged($badged);
     }
 
     // Getter
-    public function isBadged(): bool { return $this->badged; }
+    public function isBadged(): bool { 
+        return $this->badged; 
+    }
 
     // Setter
-    public function setBadged(bool $badged): void { $this->badged = $badged; }
+    public function setBadged(bool $badged): void { 
+        if (!is_bool($badged)) {
+            throw new InputException("Invalid badged value");
+        }
+        $this->badged = $badged; 
+    }
 }
