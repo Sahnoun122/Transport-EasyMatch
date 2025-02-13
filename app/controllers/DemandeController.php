@@ -16,4 +16,10 @@ class DemandeController{
     public function Dashboard(){
         return View::make('expediteur/dashbord', ['statistics' => $this->DemandeService->statistics()]);
     }
+
+    
+    public function createAnnonce($id_expediteur){
+        $this->DemandeService->createAnnonce($_POST, $id_expediteur);
+        header('Location: /expediteur/dashbord');
+    }
 }
