@@ -96,5 +96,11 @@ class AuthService{
         }catch(InputException $e){
             return ['success' => false, 'errors' => [$e->getMessage()]];
         }
-    }    
+    } 
+    
+    public function logout(){
+        session_unset();
+        session_destroy();
+        header('Location: /');
+    }
 }
