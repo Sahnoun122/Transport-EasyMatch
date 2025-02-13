@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 select-none">
     <button id="menuButton" class="lg:hidden fixed top-4 left-4 z-50 p-2 bg-gray-800 text-white rounded">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -35,11 +35,6 @@
         <header class="bg-white shadow rounded-lg p-4 mb-6">
             <div class="flex justify-between items-center">
                 <h1 class="text-2xl font-bold">Gestion des Annonces</h1>
-                <div class="flex items-center space-x-4">
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
-                        + Nouvelle Annonce
-                    </button>
-                </div>
             </div>
         </header>
 
@@ -109,7 +104,6 @@
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Détails</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Type</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Prix</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
                         </tr>
@@ -131,7 +125,6 @@
                                     Colis
                                 </span>
                             </td>
-                            <td class="px-6 py-4">45 €</td>
                             <td class="px-6 py-4">
                                 <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
                                     Active
@@ -147,19 +140,6 @@
                         <!-- Plus d'annonces -->
                     </tbody>
                 </table>
-
-                <div class="flex justify-between items-center mt-4">
-                    <div class="text-sm text-gray-500">
-                        Affichage de 1 à 10 sur 3,427 annonces
-                    </div>
-                    <div class="flex space-x-2">
-                        <button class="px-3 py-1 border rounded hover:bg-gray-100">Précédent</button>
-                        <button class="px-3 py-1 border rounded bg-blue-500 text-white">1</button>
-                        <button class="px-3 py-1 border rounded hover:bg-gray-100">2</button>
-                        <button class="px-3 py-1 border rounded hover:bg-gray-100">3</button>
-                        <button class="px-3 py-1 border rounded hover:bg-gray-100">Suivant</button>
-                    </div>
-                </div>
             </div>
     </main>
 
