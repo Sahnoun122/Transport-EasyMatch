@@ -8,7 +8,7 @@ use PDOException;
 use Core\Logger;
 
 
-class ConducteurRepository
+class ConducteurtRepository
 {
     private PDO $db;
 

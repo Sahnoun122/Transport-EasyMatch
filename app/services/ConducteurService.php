@@ -2,26 +2,24 @@
 
 
 namespace App\Services;
-use App\Repositories\ConducteurRepository;
+use App\Repositories\ConducteurtRepository;
 use App\Exceptions\InputException;
 
 
 class ConducteurService{
-    private  ConducteurRepository $repository;
+    private  ConducteurtRepository $repository;
 
 
     public function __construct(){
-        $this->repository = new ConducteurRepository();
+        $this->repository = new ConducteurtRepository();
     }
 
 
-    public function statistics(){
-        return [
-            $this->repository->getDemandeDetails(),
-        ];
+    public function Consulter(){
+
+        return $this->repository->getDemandeDetails();
+        
     }
-
-
     public function accepterdemande($id){
         try{
             return $this->repository->accepterdemande($id);
