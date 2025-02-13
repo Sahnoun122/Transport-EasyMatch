@@ -74,3 +74,12 @@ CREATE TABLE Transaction (
     statut VARCHAR(50) NOT NULL CHECK (statut IN ('en cours', 'arrive')),
     FOREIGN KEY (id_transaction) REFERENCES Demande(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+create table trajet(
+     id SERIAL PRIMARY KEY,
+     city varchar(50) not null,
+	 "order" int,
+	 annonce_id int,
+	 FOREIGN KEY (annonce_id) REFERENCES Annonce(id) ON DELETE CASCADE ON UPDATE CASCADE
+
+);
