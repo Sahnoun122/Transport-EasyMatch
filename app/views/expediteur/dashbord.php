@@ -76,24 +76,32 @@
     </div>
 </div>
 
-<div class="bg-white rounded-lg overflow-hidden shadow-lg ring-4 ring-opacity-40 max-w-sm">
-    <div class="relative">
-        <img class="w-full" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="Product Image">
-        <div class="absolute top-0 right-0 bg-green-500 text-white px-2 py-1 m-2 rounded-md text-sm font-medium">Active
-        </div>
+
+
+    <div class="container">
+        <?php if (!empty($annonces)): ?>
+            <?php foreach  ($this->params['statistics'][3] as $annonce): ?>
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg ring-4 ring-opacity-40 max-w-sm">
+                    <div class="relative">
+                        <img class="w-full" src="path/to/your/image.jpg" alt="Annonce Image">
+                        <div class="absolute top-0 right-0 bg-green-500 text-white px-2 py-1 m-2 rounded-md text-sm font-medium">Active</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-medium mb-2"><?= htmlspecialchars($annonce['description']) ?></h3>
+                        <p class="text-gray-600 text-sm mb-4">From: <?= htmlspecialchars($annonce['fromcity']) ?> To: <?= htmlspecialchars($annonce['tocity']) ?></p>
+                        <p class="text-gray-600 text-sm mb-4">Date: <?= htmlspecialchars($annonce['datedepart']) ?></p>
+                        <p class="text-gray-600 text-sm mb-4">Created At: <?= htmlspecialchars($annonce['createdAt']) ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No active annonces found.</p>
+        <?php endif; ?>
     </div>
-    <div class="p-4">
-        <h3 class="text-lg font-medium mb-2">Product Title</h3>
-        <p class="text-gray-600 text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae ante
-            vel eros fermentum faucibus sit amet euismod lorem.</p>
-        <div class="flex items-center justify-between">
-            <span class="font-bold text-lg">$19.99</span>
-            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                Buy Now
-            </button>
-        </div>
-    </div>
-</div>
+
+
+
+
         </div>
 
         <!-- Charts Section -->

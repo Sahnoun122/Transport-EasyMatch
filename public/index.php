@@ -6,6 +6,7 @@ require __DIR__.'/../app/config/environment.php';
 use App\Exceptions\RouteNotFoundException;
 use App\Controllers\ExpiditeurController;
 
+
 use App\Middlewares\AuthMiddleware;
 
 $router = new Core\Router;
@@ -14,7 +15,7 @@ $router
 ->get('/', function(){
     return 'Hello world';
 })
-->get('/expiditeur/dashboard', [ExpiditeurController::class, 'dashboard']);
+->get('/expiditeur/dashboard', [ExpiditeurController::class, 'Dashboard']);
 
 
 try{

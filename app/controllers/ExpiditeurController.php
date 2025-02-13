@@ -2,11 +2,18 @@
 
 namespace App\Controllers;
 
+use App\Services\DemandeService;
+use App\Services\AuthService;
 use Core\View;
 
 class ExpiditeurController{
-    public function dashboard(){
+    private DemandeService $DemandeService;
 
-        return View::make('expediteur/dashbord');
+    public function __construct(){
+        $this->DemandeService = new DemandeService();
+    }
+
+    public function Dashboard(){
+        return View::make('expediteur/dashbord', ['statistics' => $this->DemandeService->statistics()]);
     }
 }
