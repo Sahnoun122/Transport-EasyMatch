@@ -10,11 +10,10 @@ class DemandeService{
     public function __construct(){
         $this->repository = new DemandeRepository();
     }
-
+    
     public function statistics(){
-        return [
-            $this->repository->afficherAnnonce(),
-        ];
+        $conducteur_id = 1; 
+        return $this->repository->afficherAnnonce($conducteur_id);
     }
 
     // public function createAnnonce( $id_expediteur){

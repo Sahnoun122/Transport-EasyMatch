@@ -13,16 +13,16 @@ class DemandeRepository {
         $this->db = Database::getInstance()->getConnection();
     }
 
-    public function afficherAnnonce() {
+    public function afficherAnnonce($id) {
         try {
-            $query = "SELECT description, fromcity, tocity, datedepart, createdAt FROM annonces WHERE Statut = 'Active' AND conducteur_id = :id";
+            $query = "SELECT description, from_city, to_city, date_depart, created_at FROM Annonce WHERE statut = 'Active' AND conducteur_id = :id";
             $stmt = $this->db->prepare($query);
-            $stmt->bindValue(':id', $_SESSION['user_id'], PDO::PARAM_INT);
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
-            return $stmt->fetchColumn() ?? 0;
+            return $stmt->fetchAll() ?? [];
         } catch (PDOException $e) {
             Logger::error_log($e->getMessage());
-            return 0;
+            return [];
         }
     }
    

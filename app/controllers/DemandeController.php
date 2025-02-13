@@ -6,20 +6,20 @@ use App\Services\DemandeService;
 use App\Services\AuthService;
 use Core\View;
 
-class DemandeController{
-    private DemandeService $DemandeService;
+class DemandeController
+{
+    protected $repository;
 
-    public function __construct(){
-        $this->DemandeService = new DemandeService();
+    public function __construct()
+    {
+        // Initialisation du repository
+        $this->repository = new DemandeService();
     }
 
-    public function Dashboard(){
-        return View::make('expediteur/dashbord', ['statistics' => $this->DemandeService->statistics()]);
+    public function Dashboard()
+    {
+        // Appel de la méthode statistics() via le repository
+        $statistics = $this->repository->statistics();
+        return View::make('expediteur/dashborddemande', ['statistics' => $statistics]);
     }
-
-    
-    // public function createAnnonce($id_expediteur){
-    //     $this->DemandeService->createAnnonce($_POST, $id_expediteur);
-    //     header('Location: /expediteur/dashbord');
-    // }
 }
