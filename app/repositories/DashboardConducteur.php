@@ -13,12 +13,40 @@ class DashboardCondecteur {
     public function __construct() {
         $this->db = Database::getInstance()->getConnection();
     }
-
-    public function accepterdemande($id){
+    
+        public function getDemandeDetails() {
+            try {
+                $query = "
+                    SELECT 
+                        d.longueur, 
+                        d.largeur, 
+                        d.statut, 
+                        d.hauteur, 
+                        d.poids, 
+                        d.depart, 
+                        u.fname 
+                    FROM 
+                        Demande d
+                    JOIN 
+                        Users u ON d.expediteur_id = u.id
+                ";
+                $stmt = $this->db->prepare($query);
+                $stmt->execute();
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+                Logger::error_log($e->getMessage());
+                return [];
+            }
+        }
+  
+    
+    public function accepterdemande($id , $statut ){
         try {
             $sql = "UPDATE Annonce SET  Statut = 'Accepte' WHERE id = :id";
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt->bindParam(":id",  $statut , PDO::PARAM_INT);
+
             $stmt->execute();
         } catch (PDOException $e) {
             return "Erreur lors de la confirmation demande : ". $e->getMessage();
