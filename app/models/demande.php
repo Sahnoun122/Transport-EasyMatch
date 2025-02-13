@@ -22,37 +22,14 @@ class Demande {
     }
 
     // Accesseur (Getters)
-    public function getId() {
-        return $this->id;
-    }
-
-    public function getStatus() {
-        return $this->status;
-    }
-
-    public function getLongueur() {
-        return $this->longueur;
-    }
-
-    public function getLargeur() {
-        return $this->largeur;
-    }
-
-    public function getHauteur() {
-        return $this->hauteur;
-    }
-
-    public function getPoids() {
-        return $this->poids;
-    }
-
-    public function getDepart() {
-        return $this->depart;
-    }
-
-    public function getDestination() {
-        return $this->destination;
-    }
+    public function getId() {return $this->id;}
+    public function getStatus() {return $this->status;}
+    public function getLongueur() {return $this->longueur;}
+    public function getLargeur() {return $this->largeur;}
+    public function getHauteur() {return $this->hauteur;}
+    public function getPoids() {return $this->poids;}
+    public function getDepart() {return $this->depart;}
+    public function getDestination() {return $this->destination;}
 
     // Modificateur (Setters)
     public function setStatus($status) { 
