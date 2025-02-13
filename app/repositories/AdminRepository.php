@@ -34,5 +34,5 @@ class AdminRepository {
             return "Erreur lors de la confirmation demande : ". $e->getMessage();
         }
     }
-    // public function accepter
+    
 }
