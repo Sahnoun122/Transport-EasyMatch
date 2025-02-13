@@ -18,8 +18,8 @@ class DemandeController{
     }
 
     
-    public function createAnnonce($id_expediteur){
-        $this->DemandeService->createAnnonce($_POST, $id_expediteur);
-        header('Location: /expediteur/dashbord');
-    }
+    // public function createAnnonce($id_expediteur){
+    //     $this->DemandeService->createAnnonce($_POST, $id_expediteur);
+    //     header('Location: /expediteur/dashbord');
+    // }
 }

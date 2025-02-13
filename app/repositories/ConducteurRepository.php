@@ -7,7 +7,7 @@ use PDO;
 use PDOException;
 use Core\Logger;
  
-class DashboardCondecteur {
+class ConducteurRepository {
     private PDO $db;
 
     public function __construct() {

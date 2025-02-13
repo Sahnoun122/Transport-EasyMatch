@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Services;
-use App\Repositories\DashboardCondecteur;
+use App\Repositories\ConducteurRepository;
 use App\Exceptions\InputException;
 
 class ConducteurService{
-    private  DashboardCondecteur $repository;
+    private  ConducteurRepository $repository;
 
     public function __construct(){
-        $this->repository = new DashboardCondecteur();
+        $this->repository = new ConducteurRepository();
     }
 
     public function statistics(){
@@ -17,7 +17,6 @@ class ConducteurService{
         ];
     }
 
-  
     public function accepterdemande($id){
         try{
             return $this->repository->accepterdemande($id);
