@@ -38,11 +38,6 @@
         <header class="bg-white shadow rounded-lg p-4 mb-6">
             <div class="flex justify-between items-center">
                 <h1 class="text-2xl font-bold">Évaluations</h1>
-                <div class="flex items-center space-x-4">
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
-                        Exporter les statistiques
-                    </button>
-                </div>
             </div>
         </header>
 
@@ -171,19 +166,6 @@
                 </div>
 
                 <!-- Plus d'avis... -->
-            </div>
-
-            <div class="flex justify-between items-center mt-4">
-                <div class="text-sm text-gray-500">
-                    Affichage de 1 à 10 sur 1,234 avis
-                </div>
-                <div class="flex space-x-2">
-                    <button class="px-3 py-1 border rounded hover:bg-gray-100">Précédent</button>
-                    <button class="px-3 py-1 border rounded bg-blue-500 text-white">1</button>
-                    <button class="px-3 py-1 border rounded hover:bg-gray-100">2</button>
-                    <button class="px-3 py-1 border rounded hover:bg-gray-100">3</button>
-                    <button class="px-3 py-1 border rounded hover:bg-gray-100">Suivant</button>
-                </div>
             </div>
         </div>
     </main>
