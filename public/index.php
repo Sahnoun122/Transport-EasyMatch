@@ -11,6 +11,8 @@ use App\Middlewares\AuthMiddleware;
 
 $router = new Core\Router;
 
+
+
 $router
 ->get('/', function(){
     return 'Hello world';
