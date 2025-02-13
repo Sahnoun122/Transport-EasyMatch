@@ -3,8 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\User;
-use App\Models\Patient;
-use App\Models\Medecin;
 use Core\Database;
 use PDO;
 use PDOException;
@@ -27,5 +25,18 @@ class AuthRepository{
         $emailCheckStmt->execute();
         $user = $emailCheckStmt->fetch();
         return $user;
+    }
+    
+    public function login(User $user){
+        try{
+            $query = 'SELECT id, role, password FROM "user" WHERE email = :email';
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
+            $stmt->execute();
+            return $stmt->fetch();
+        }catch(PDOException $e){
+            Logger::error_log($e->getMessage());
+            return null;
+        }
     }
 }
