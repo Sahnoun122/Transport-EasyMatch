@@ -57,8 +57,6 @@
 
         <!-- Stats Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
-
-
 <div class="container">
     <?php if (!empty($this->params['statistics'])): ?>
         <?php foreach ($this->params['statistics'] as $annonce): ?>
@@ -83,6 +81,8 @@
         <p>No active annonces found.</p>
     <?php endif; ?>
 </div>
+
+
         </div>
         <!-- Charts Section -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
