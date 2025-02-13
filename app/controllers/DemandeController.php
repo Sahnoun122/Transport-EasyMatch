@@ -23,8 +23,8 @@ class DemandeController
 
 
 
-    public function createDemande($data){
-        $this->repository->createDemande($_POST , $data);
+    public function createDemande(){
+        $this->repository->createDemande($_POST);
         header('Location: /expiditeur/dashboard');
     }
 

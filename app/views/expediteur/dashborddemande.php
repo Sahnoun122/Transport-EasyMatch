@@ -99,7 +99,7 @@
                     <span class="sr-only">Close modal</span>
                 </button>
             </div>
-            <form class="p-4 md:p-5" method="POST" action="votre_script_php.php">
+            <form class="p-4 md:p-5" method="POST" action="/expiditeur/dashboard{id_expiditeur}">
     <div class="grid gap-4 mb-4 grid-cols-2">
         <div class="col-span-2 sm:col-span-1">
             <label for="longueur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">longueur</label>

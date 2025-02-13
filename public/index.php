@@ -6,7 +6,7 @@ require __DIR__.'/../app/config/environment.php';
 use App\Exceptions\RouteNotFoundException;
 use App\Controllers\DemandeController;
 
-
+$_SESSION['user_id'] = 1;
 use App\Middlewares\AuthMiddleware;
 
 $router = new Core\Router;
