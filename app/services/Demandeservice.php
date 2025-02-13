@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Repositories\DemandeRepository;
 use App\Exceptions\InputException;
 
-class DashboardService{
+class DemandeService{
     private DemandeRepository $repository;
 
     public function __construct(){
@@ -15,8 +15,6 @@ class DashboardService{
     public function statistics(){
         return [
             $this->repository->afficherAnnonce(),
-            
-
         ];
     }
 }
