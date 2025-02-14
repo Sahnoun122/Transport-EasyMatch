@@ -71,21 +71,20 @@
                     <tbody class="divide-y divide-gray-200">
                         <?php foreach ($this->parames['afficher'] as $user) { ?>
                             <tr>
-                                <td class="px-6 py-4"> $user['id']</td>
+                                <td class="px-6 py-4"> <?=$user['id'] ?></td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
                                         <img src="/api/placeholder/32/32" alt="" class="w-8 h-8 rounded-full mr-3">
                                         <div>
-                                            <div class="text-sm font-medium">Jean Dupont</div>
-                                            <div class="text-sm text-gray-500">Inscrit le 12/02/2024</div>
+                                            <div class="text-sm font-medium"><?= $user['fname'] .' '. $user['lname']?></div> 
                                         </div>
                                     </div>
                                 </td>
-                                <td class="px-6 py-4">jean.dupont@example.com</td>
-                                <td class="px-6 py-4">Conducteur</td>
+                                <td class="px-6 py-4"><?= $user['email']?></td>
+                                <td class="px-6 py-4"><?= $user['role']?></td>
                                 <td class="px-6 py-4">
                                     <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                                        Actif
+                                    <?= $user['statut']?>
                                     </span>
                                 </td>
                                 <td class="px-6 py-4">
