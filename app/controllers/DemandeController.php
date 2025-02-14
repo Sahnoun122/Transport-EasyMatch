@@ -12,14 +12,17 @@ class DemandeController
 
     public function __construct()
     {
-        // Initialisation du repository
         $this->repository = new DemandeService();
     }
 
     public function Dashboard()
     {
-        // Appel de la méthode statistics() via le repository
         $statistics = $this->repository->statistics();
         return View::make('expediteur/dashborddemande', ['statistics' => $statistics]);
     }
+    public function createDemande($data){
+        $this->repository->createDemande( $data);
+        header('Location: /expiditeur/dashboard');
+    }
+
 }

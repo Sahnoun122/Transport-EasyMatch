@@ -1,7 +1,15 @@
 <?php
 
+namespace App\Models;
+
+use Core\Database;
+use PDO;
+use Exception;
+use Core\Logger;
 class Demande {
-    protected $id;
+    protected $id_expedeteur;
+    protected $id_type;
+    protected $id_annonce;
     protected $status;
     protected $longueur;
     protected $largeur;
@@ -10,8 +18,10 @@ class Demande {
     protected $depart;
     protected $destination;
 
-    public function __construct($id = null, $status = null, $longueur = null, $largeur = null, $hauteur = null, $poids = null, $depart = null, $destination = null) {
-        $this->id = $id;
+    public function __construct($id_expedeteur = null, $id_type = null, $id_annonce = null, $status = null, $longueur = null, $largeur = null, $hauteur = null, $poids = null, $depart = null, $destination = null) {
+        $this->id_expedeteur = $id_expedeteur;
+        $this->id_type = $id_type;
+        $this->id_annonce = $id_annonce;
         $this->status = $status;    
         $this->longueur = $longueur;
         $this->largeur = $largeur;
@@ -22,7 +32,9 @@ class Demande {
     }
 
     // Accesseur (Getters)
-    public function getId() {return $this->id;}
+    public function getIdExpedeteur() {return $this->id_expedeteur;}
+    public function getIdType() {return $this->id_type;}
+    public function getIdAnnonce() {return $this->id_annonce;}
     public function getStatus() {return $this->status;}
     public function getLongueur() {return $this->longueur;}
     public function getLargeur() {return $this->largeur;}
@@ -32,6 +44,30 @@ class Demande {
     public function getDestination() {return $this->destination;}
 
     // Modificateur (Setters)
+    public function setIdExpediteur($id_expedeteur) { 
+        if ($id_expedeteur !== null && $id_expedeteur > 0) {
+            $this->id_expedeteur = $id_expedeteur;
+        } else {
+            throw new Exception("Le statut ne peut pas être null ou inferieur de zero.");
+        }
+    }
+
+    public function setIdType($id_type) { 
+        if ($id_type !== null && $id_type > 0) {
+            $this->id_type = $id_type;
+        } else {
+            throw new Exception("Le statut ne peut pas être null ou inferieur de zero.");
+        }
+    }
+    
+    public function setIdAnnonce($id_annonce) { 
+        if ($id_annonce !== null && $id_annonce > 0) {
+            $this->id_annonce = $id_annonce;
+        } else {
+            throw new Exception("Le statut ne peut pas être null ou inferieur de zero.");
+        }
+    }
+
     public function setStatus($status) { 
         if ($status !== null) {
             $this->status = $status;

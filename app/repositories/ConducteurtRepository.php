@@ -8,7 +8,7 @@ use PDO;
 use PDOException;
 use Core\Logger;
 
-class ConducteurRepository
+class ConducteurtRepository
 {
     private PDO $db;
 
@@ -56,7 +56,7 @@ class ConducteurRepository
         }
     }
 
-    public function refusedemande($id)
+    public function refuseDemande($id)
     {
         try {
             $sql = "UPDATE Annonce SET  Statut = 'Refuse' WHERE id = :id";

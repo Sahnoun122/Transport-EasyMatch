@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -56,30 +57,119 @@
 
         <!-- Stats Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
-            <div class="container">
-                <?php if (!empty($this->params['statistics'])): ?>
-                    <?php foreach ($this->params['statistics'] as $annonce): ?>
-                        <div class="bg-white rounded-lg overflow-hidden shadow-lg ring-4 ring-opacity-40 max-w-sm">
-                            <div class="relative">
-                                <img class="w-full" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="Product Image">
-                                <div class="absolute top-0 right-0 bg-green-500 text-white px-2 py-1 m-2 rounded-md text-sm font-medium">Active
-                                </div>
-                            </div>
-                            <div class="relative">
-                                <div class=""></div>
-                            </div>
-                            <div class="p-4">
-                                <h3 class="text-lg font-medium mb-2"><?= htmlspecialchars($annonce['description']) ?></h3>
-                                <p class="text-gray-600 text-sm mb-4">From: <?= htmlspecialchars($annonce['from_city']) ?> To: <?= htmlspecialchars($annonce['to_city']) ?></p>
-                                <p class="text-gray-600 text-sm mb-4">Date: <?= htmlspecialchars($annonce['date_depart']) ?></p>
-                                <p class="text-gray-600 text-sm mb-4">Created At: <?= htmlspecialchars($annonce['created_at']) ?></p>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <p>No active annonces found.</p>
-                <?php endif; ?>
+<div class="container">
+    <?php if (!empty($this->params['statistics'])): ?>
+        <?php foreach ($this->params['statistics'] as $annonce): ?>
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg ring-4 ring-opacity-40 max-w-sm">
+            <div class="relative">
+        <img class="w-full" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="Product Image">
+        <div class="absolute top-0 right-0 bg-green-500 text-white px-2 py-1 m-2 rounded-md text-sm font-medium">Active
+        </div>
+    </div>
+                <div class="relative">
+                    <div class=""></div>
+                    <?php
+         $annonce_id = 1; 
+     if (!isset($annonce_id)) {
+    die("Erreur : L'ID de l'annonce n'est pas défini.");
+     }
+         ?>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-medium mb-2"><?= htmlspecialchars($annonce['description']) ?></h3>
+                    <p class="text-gray-600 text-sm mb-4">From: <?= htmlspecialchars($annonce['from_city']) ?> To: <?= htmlspecialchars($annonce['to_city']) ?></p>
+                    <p class="text-gray-600 text-sm mb-4">Date: <?= htmlspecialchars($annonce['date_depart']) ?></p>
+                    <p class="text-gray-600 text-sm mb-4">Created At: <?= htmlspecialchars($annonce['created_at']) ?></p>
+                </div>
+
+                       
+<!-- Bouton pour ouvrir la modal -->
+<button data-modal-target="crud-modal"  onclick="btn()"  data-modal-toggle="crud-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mb-5 ml-5" type="button">
+    Demande
+</button>
+
+<!-- Modal -->
+<div id="crud-modal"   tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <!-- Contenu de la modal -->
+        <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+            <!-- En-tête de la modal -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    Creé demande
+                </h3>
+                <button type="button"  onclick="btn()"  class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
             </div>
+
+
+            <form class="p-4 md:p-5" method="POST" action="/expiditeur/dashboard{id_expiditeur}">
+    <div class="grid gap-4 mb-4 grid-cols-2">
+        <!-- Champ Longueur -->
+        <div class="col-span-2 sm:col-span-1">
+            <label for="longueur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Longueur (en cm)</label>
+            <input type="number" name="longueur" id="longueur" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Entrez la longueur" required min="1">
+        </div>
+
+        <!-- Champ Largeur -->
+        <div class="col-span-2 sm:col-span-1">
+            <label for="largeur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Largeur (en cm)</label>
+            <input type="number" name="largeur" id="largeur" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Entrez la largeur" required min="1">
+        </div>
+
+        <!-- Champ Hauteur -->
+        <div class="col-span-2 sm:col-span-1">
+            <label for="hauteur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hauteur (en cm)</label>
+            <input type="number" name="hauteur" id="hauteur" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Entrez la hauteur" required min="1">
+        </div>
+
+        <!-- Champ Poids -->
+        <div class="col-span-2 sm:col-span-1">
+            <label for="poids" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Poids (en kg)</label>
+            <input type="number" name="poids" id="poids" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Entrez le poids" required min="1">
+        </div>
+
+        <!-- Champ Départ -->
+        <div class="col-span-2 sm:col-span-1">
+            <label for="depart" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lieu de départ</label>
+            <input type="text" name="depart" id="depart" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Entrez le lieu de départ" required>
+        </div>
+
+        <!-- Champ Destination -->
+        <div class="col-span-2 sm:col-span-1">
+            <label for="destination" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Destination</label>
+            <input type="text" name="destination" id="destination" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Entrez la destination" required>
+        </div>
+    </div>
+
+    <!-- Champ caché pour l'ID de l'annonce -->
+    <input type="hidden" name="annonce_id" value="<?php echo $annonce_id; ?>">
+    <input type="hidden" name="type_id" value="<?php echo $type_id; ?>">
+
+
+    <!-- Bouton de soumission -->
+    <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
+        </svg>
+        Demander
+    </button>
+</form>
+        </div>
+    </div>
+</div>
+</div> 
+
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>No active annonces found.</p>
+    <?php endif; ?>
+</div>
 
 
         </div>
@@ -138,6 +228,20 @@
     </main>
 
     <script>
+
+const modal = document.querySelector("#crud-modal");
+let isclick = true;
+let btn = function() {
+    if (isclick == 1) {
+        modal.style.display = "block";
+        isclick = 0;
+    } else {
+        modal.style.display = "none";
+        isclick = 1;
+    }
+}
+
+
         // Logique du menu burger
         const menuButton = document.getElementById('menuButton');
         const sidebar = document.getElementById('sidebar');
@@ -208,6 +312,8 @@
 
         // Initialisation des graphiques
         initCharts();
+
+
     </script>
 </body>
 
