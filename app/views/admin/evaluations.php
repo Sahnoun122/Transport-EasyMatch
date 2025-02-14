@@ -1,6 +1,7 @@
+
+
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.7.0/chart.min.js"></script>
 </head>
 
-<body class="bg-gray-100 select-none">
+<body class="bg-gray-100 ">
     <!-- Menu Burger -->
     <button id="menuButton" class="lg:hidden fixed top-4 left-4 z-50 p-2 bg-gray-800 text-white rounded">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -149,27 +150,35 @@
                         <th class="p-3 text-left">Date</th>
                         <th class="p-3 text-left">Évaluation</th>
                         <th class="p-3 text-left">Commentaire</th>
+                        <th class="p-3 text-left">Titre d'Annonce</th>
                         <th class="p-3 text-left">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="border-b">
-                        <td class="p-3 text-sm text-gray-500">12 février 2024</td>
-                        <td class="p-3">
-                            <div class="flex items-center">
-                                ⭐⭐⭐⭐⭐
-                            </div>
-                        </td>
-                        <td class="p-3">
-                            <p>Excellent service, conducteur très professionnel et ponctuel. Je recommande !</p>
-                        </td>
-                        <td class="p-3">
-                            <div class="flex space-x-2">
-                                <button class="text-green-600 hover:text-green-800">Approuver</button>
-                                <button class="text-red-600 hover:text-red-800">Supprimer</button>
-                            </div>
-                        </td>
-                    </tr>
+                    <?php if (!empty($this->params['evaluation'])): ?>
+                        <?php foreach ($this->params['evaluation'] as $evaluation): ?>
+                            <tr class="border-b">
+                                <td class="p-3 text-sm text-gray-500"><?= htmlspecialchars($evaluation['created_at']) ?></td>
+                                <td class="p-3">
+                                    <div class="flex items-center">
+                                        <?php
+                                        echo str_repeat('⭐', $evaluation['rate']);
+                                        ?>
+                                    </div>
+                                </td>
+                                <td class="p-3">
+                                    <p><?= htmlspecialchars($evaluation['comment']) ?></p>
+                                </td>
+                                <td class="p-3"><?= '' ?></td>
+                                <td class="p-3">
+                                    <div class="flex space-x-2">
+                                        <button class="text-green-600 hover:text-green-800">Approuver</button>
+                                        <button class="text-red-600 hover:text-red-800">Supprimer</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    <?php endif ?>
                 </tbody>
             </table>
         </div>

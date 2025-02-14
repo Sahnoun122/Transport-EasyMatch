@@ -1,5 +1,11 @@
 <?php
 
+namespace App\Models;
+
+use Core\Database;
+use PDO;
+use Exception;
+use Core\Logger;
 class Demande {
     protected $id_expedeteur;
     protected $id_type;
