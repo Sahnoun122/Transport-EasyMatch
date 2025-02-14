@@ -35,11 +35,6 @@
         <header class="bg-white shadow rounded-lg p-4 mb-6">
             <div class="flex justify-between items-center">
                 <h1 class="text-2xl font-bold">Gestion des Utilisateurs</h1>
-                <div class="flex items-center space-x-4">
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
-                        + Nouvel Utilisateur
-                    </button>
-                </div>
             </div>
         </header>
 
@@ -55,9 +50,6 @@
                     </select>
                 </div>
                 <div class="flex space-x-2">
-                    <button class="p-2 hover:bg-gray-100 rounded">
-                        Exporter
-                    </button>
                     <button class="p-2 hover:bg-gray-100 rounded">
                         Filtres
                     </button>
@@ -104,16 +96,6 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-
-            <div class="flex justify-between items-center mt-4">
-                <div class="text-sm text-gray-500">
-                    Affichage de 1 à 10 sur 100 utilisateurs
-                </div>
-                <div class="flex space-x-2">
-                    <button class="px-3 py-1 border rounded hover:bg-gray-100">Précédent</button>
-                    <button class="px-3 py-1 border rounded hover:bg-gray-100">Suivant</button>
-                </div>
             </div>
         </div>
     </main>

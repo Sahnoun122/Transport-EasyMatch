@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -135,15 +134,6 @@
     </div>
 </div>
 </div> 
-
-            </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>No active annonces found.</p>
-    <?php endif; ?>
-</div>
-
-
         </div>
         <!-- Charts Section -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
@@ -289,4 +279,4 @@ let btn = function() {
     </script>
 </body>
 
-</html>
+</html>                     

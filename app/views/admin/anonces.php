@@ -89,9 +89,6 @@
                 </div>
                 <div class="flex space-x-2">
                     <button class="p-2 hover:bg-gray-100 rounded">
-                        Exporter
-                    </button>
-                    <button class="p-2 hover:bg-gray-100 rounded">
                         Filtres
                     </button>
                 </div>

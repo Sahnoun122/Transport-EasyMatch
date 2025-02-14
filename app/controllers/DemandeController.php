@@ -20,11 +20,8 @@ class DemandeController
         $statistics = $this->repository->statistics();
         return View::make('expediteur/dashborddemande', ['statistics' => $statistics]);
     }
-
-
-
     public function createDemande($data){
-        $this->repository->createDemande($_POST , $data);
+        $this->repository->createDemande( $data);
         header('Location: /expiditeur/dashboard');
     }
 

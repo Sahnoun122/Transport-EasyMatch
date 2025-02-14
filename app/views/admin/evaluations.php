@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.7.0/chart.min.js"></script>
 </head>
 
-<body class="bg-gray-100 select-none">
+<body class="bg-gray-100 ">
     <!-- Menu Burger -->
     <button id="menuButton" class="lg:hidden fixed top-4 left-4 z-50 p-2 bg-gray-800 text-white rounded">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -38,11 +38,6 @@
         <header class="bg-white shadow rounded-lg p-4 mb-6">
             <div class="flex justify-between items-center">
                 <h1 class="text-2xl font-bold">Évaluations</h1>
-                <div class="flex items-center space-x-4">
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
-                        Exporter les statistiques
-                    </button>
-                </div>
             </div>
         </header>
 
@@ -148,43 +143,61 @@
                 </div>
             </div>
 
-            <div class="space-y-4">
-                <!-- Avis individuel -->
-                <div class="border rounded-lg p-4">
-                    <div class="flex justify-between items-start">
-                        <div class="flex items-start">
-                            <img src="/api/placeholder/40/40" alt="" class="w-10 h-10 rounded-full mr-3">
-                            <div>
-                                <div class="font-medium">Pierre Durand</div>
-                                <div class="text-sm text-gray-500">12 février 2024</div>
-                                <div class="flex items-center mt-1">
-                                    ⭐⭐⭐⭐⭐
-                                </div>
-                                <p class="mt-2">Excellent service, conducteur très professionnel et ponctuel. Je recommande !</p>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="text-green-600 hover:text-green-800">Approuver</button>
-                            <button class="text-red-600 hover:text-red-800">Supprimer</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Plus d'avis... -->
-            </div>
-
-            <div class="flex justify-between items-center mt-4">
-                <div class="text-sm text-gray-500">
-                    Affichage de 1 à 10 sur 1,234 avis
-                </div>
-                <div class="flex space-x-2">
-                    <button class="px-3 py-1 border rounded hover:bg-gray-100">Précédent</button>
-                    <button class="px-3 py-1 border rounded bg-blue-500 text-white">1</button>
-                    <button class="px-3 py-1 border rounded hover:bg-gray-100">2</button>
-                    <button class="px-3 py-1 border rounded hover:bg-gray-100">3</button>
-                    <button class="px-3 py-1 border rounded hover:bg-gray-100">Suivant</button>
-                </div>
-            </div>
+            <table class="w-full border-collapse">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="p-3 text-left">Date</th>
+                        <th class="p-3 text-left">Évaluation</th>
+                        <th class="p-3 text-left">Commentaire</th>
+                        <th class="p-3 text-left">Titre d'Annonce</th>
+                        <th class="p-3 text-left">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (!empty($this->params['evaluation'])): ?>
+                        <?php foreach ($this->params['evaluation'] as $evaluation): ?>
+                            <tr class="border-b">
+                                <td class="p-3 text-sm text-gray-500"><?= htmlspecialchars($evaluation['created_at']) ?></td>
+                                <td class="p-3">
+                                    <div class="flex items-center">
+                                        <?php
+                                        switch ($evaluation['rate']) {
+                                            case 1:
+                                                echo '⭐';
+                                                exit;
+                                            case 2:
+                                                echo '⭐⭐';
+                                                exit;
+                                            case 3:
+                                                echo '⭐⭐⭐';
+                                                exit;
+                                            case 4:
+                                                echo '⭐⭐⭐⭐';
+                                                exit;
+                                            case 5:
+                                                echo '⭐⭐⭐⭐⭐';
+                                                exit;
+                                            default:
+                                                exit;
+                                        }
+                                        ?>
+                                    </div>
+                                </td>
+                                <td class="p-3">
+                                    <p><?= htmlspecialchars($evaluation['comment']) ?></p>
+                                </td>
+                                <td class="p-3"><?= '' ?></td>
+                                <td class="p-3">
+                                    <div class="flex space-x-2">
+                                        <button class="text-green-600 hover:text-green-800">Approuver</button>
+                                        <button class="text-red-600 hover:text-red-800">Supprimer</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    <?php endif ?>
+                </tbody>
+            </table>
         </div>
     </main>
 

@@ -38,11 +38,6 @@
         <header class="bg-white shadow rounded-lg p-4 mb-6">
             <div class="flex justify-between items-center">
                 <h1 class="text-2xl font-bold">Transactions</h1>
-                <div class="flex items-center space-x-4">
-                    <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
-                        Télécharger le rapport
-                    </button>
-                </div>
             </div>
         </header>
 
@@ -97,11 +92,6 @@
                         <option>Remboursée</option>
                     </select>
                 </div>
-                <div class="flex space-x-2">
-                    <button class="p-2 hover:bg-gray-100 rounded">
-                        Filtres avancés
-                    </button>
-                </div>
             </div>
 
             <div class="overflow-x-auto">
@@ -146,18 +136,6 @@
                 </table>
             </div>
 
-            <div class="flex justify-between items-center mt-4">
-                <div class="text-sm text-gray-500">
-                    Affichage de 1 à 10 sur 245 transactions
-                </div>
-                <div class="flex space-x-2">
-                    <button class="px-3 py-1 border rounded hover:bg-gray-100">Précédent</button>
-                    <button class="px-3 py-1 border rounded bg-blue-500 text-white">1</button>
-                    <button class="px-3 py-1 border rounded hover:bg-gray-100">2</button>
-                    <button class="px-3 py-1 border rounded hover:bg-gray-100">3</button>
-                    <button class="px-3 py-1 border rounded hover:bg-gray-100">Suivant</button>
-                </div>
-            </div>
         </div>
     </main>
 
