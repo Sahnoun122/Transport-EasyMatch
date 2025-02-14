@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use App\Models\Patient;
+use App\Models\Medecin;
 use Core\Database;
 use PDO;
 use PDOException;
@@ -16,9 +18,9 @@ class AuthRepository{
 
     public function getUserByEmailOrId($value){
         if(is_string($value))
-            $emailCheckQuery = 'SELECT * FROM Users WHERE email = :value';
+            $emailCheckQuery = 'SELECT * FROM "user" WHERE email = :value';
         else
-            $emailCheckQuery = 'SELECT * FROM Users WHERE id = :value';
+            $emailCheckQuery = 'SELECT * FROM "user" WHERE id = :value';
 
         $emailCheckStmt = $this->db->prepare($emailCheckQuery);
         $emailCheckStmt->bindValue(':value', $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
@@ -27,23 +29,10 @@ class AuthRepository{
         return $user;
     }
 
-    public function login(User $user){
-        try{
-            $query = 'SELECT id, role, password FROM Users WHERE email = :email';
-            $stmt = $this->db->prepare($query);
-            $stmt->bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
-            $stmt->execute();
-            return $stmt->fetch();
-        }catch(PDOException $e){
-            Logger::error_log($e->getMessage());
-            return null;
-        }
-    }
-
     public function register(User $user){
         try{
             $hashedPassword = password_hash($user->getPassword(), PASSWORD_DEFAULT);    
-            $query = 'INSERT INTO Users(fname, lname, email, password, role) VALUES(:fname, :lname, :email, :password, :role)';
+            $query = 'INSERT INTO "user"(fname, lname, email, password, role) VALUES(:fname, :lname, :email, :password, :role)';
             $stmt = $this->db->prepare($query);
             $stmt->bindValue(':fname', htmlspecialchars($user->getFname()), PDO::PARAM_STR);
             $stmt->bindValue(':lname', htmlspecialchars($user->getLname()), PDO::PARAM_STR);
@@ -61,4 +50,16 @@ class AuthRepository{
         }
     }
 
+    public function login(User $user){
+        try{
+            $query = 'SELECT id, role, password FROM "user" WHERE email = :email';
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
+            $stmt->execute();
+            return $stmt->fetch();
+        }catch(PDOException $e){
+            Logger::error_log($e->getMessage());
+            return null;
+        }
+    }
 }
