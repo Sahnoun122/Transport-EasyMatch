@@ -18,7 +18,7 @@ class ConducteurtRepository
         $this->db = Database::getInstance()->getConnection();
     }
 
-    public function getDemandeDetails()
+    public function getdemande()
     {
         try {
             $query = "

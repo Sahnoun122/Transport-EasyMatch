@@ -16,7 +16,7 @@ class ConducteurControllers {
         return View::make('conducteur/consulterdemande', ['Consulter' => $Consulter]);
     }
 
-    public function handleDemandeAction() {
+    public function accepterRefuse() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $demandeId = $_POST['demande_id'] ?? null;
             $action = $_POST['action'] ?? null;
