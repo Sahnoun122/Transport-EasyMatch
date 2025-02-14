@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Controllers;
 
+namespace App\Controllers;
 use App\Services\ConducteurService;
 use Core\View;
 use App\Controllers\EmailController;
