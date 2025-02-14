@@ -18,7 +18,7 @@ class ConducteurService{
     
     public function  Consulter() {
         try{
-            return $this->repository->getDemandeDetails();
+            return $this->repository->getdemande();
         }catch(\Exception $e){
             return false;
         }
