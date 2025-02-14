@@ -109,9 +109,9 @@ class User{
 
     public function setRole($role){
         if($role != null){
-            $validRoles = ['conducteur', 'expediteur'];
+            $validRoles = ['conducteur', 'expediteur', 'admin'];
             if(!in_array($role, $validRoles))
-                throw new InputException("Role must be 'patient' or 'doctor'.");
+                throw new InputException("Role must be 'conducteur' or 'expediteur'.");
         }
         $this->role = $role;
     }
