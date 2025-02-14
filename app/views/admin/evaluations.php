@@ -1,6 +1,7 @@
+
+
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -161,25 +162,7 @@
                                 <td class="p-3">
                                     <div class="flex items-center">
                                         <?php
-                                        switch ($evaluation['rate']) {
-                                            case 1:
-                                                echo '⭐';
-                                                exit;
-                                            case 2:
-                                                echo '⭐⭐';
-                                                exit;
-                                            case 3:
-                                                echo '⭐⭐⭐';
-                                                exit;
-                                            case 4:
-                                                echo '⭐⭐⭐⭐';
-                                                exit;
-                                            case 5:
-                                                echo '⭐⭐⭐⭐⭐';
-                                                exit;
-                                            default:
-                                                exit;
-                                        }
+                                        echo str_repeat('⭐', $evaluation['rate']);
                                         ?>
                                     </div>
                                 </td>

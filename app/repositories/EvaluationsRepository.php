@@ -28,4 +28,17 @@ class EvaluationRepository {
         }
     }
     
+    public function Stars($rate){
+        try{
+            $stmt = $this->db->prepare("SELECT rate FROM Evaluation WHERE rate = :rate");
+            $stmt->bindParam(':rate', $rate);
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC) ?? [];
+
+        }catch(PDOException $e){
+            Logger::error_log($e->getMessage());
+            return [];
+        }
+    }
 }
