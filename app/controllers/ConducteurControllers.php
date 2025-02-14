@@ -32,6 +32,8 @@ class ConducteurControllers
                     if ($action === 'Accepte') {
                         $result = $this->repository->accepterService($demandeId);
                         if ($result) {
+                            
+                    
 
                             header('Location: /conducteur/dashbordconsulter');
                             exit();
@@ -39,7 +41,7 @@ class ConducteurControllers
                     } elseif ($action === 'Refuse') {
                         $result = $this->repository->refuseService($demandeId);
                         if ($result) {
-                            
+
                             header('Location: /conducteur/dashbordconsulter');
                             exit();
                         }
