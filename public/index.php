@@ -5,6 +5,7 @@ require __DIR__.'/../app/config/environment.php';
 
 use App\Exceptions\RouteNotFoundException;
 use App\Controllers\DemandeController;
+use App\Controllers\AdminController;
 use App\Controllers\EvaluationController;
 use App\Controllers\ConducteurControllers;
 use App\Middlewares\AuthMiddleware;
@@ -18,6 +19,9 @@ $router
     return 'Hello world';
 })
 ->get('/expiditeur/dashboard', [DemandeController::class, 'Dashboard'])
+->get('/admin/utilisateurs', [AdminController::class, 'afficher'])
+->post('/expiditeur/dashboard{id_expiditeur}', [DemandeController::class, 'createAnnonce'])
+->post('/admin/suspend/{id}', [AdminController::class, 'suspendre']);
 ->post('/expiditeur/dashboard{id_expiditeur}', [DemandeController::class, 'createDemande'])
 ->get('/expediteur/dashboard', [DemandeController::class, 'Dashboard'])
 ->get('/conducteur/dashbordconsulter', [ConducteurControllers::class, 'Consulter'])
