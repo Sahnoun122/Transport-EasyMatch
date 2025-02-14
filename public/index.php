@@ -5,6 +5,7 @@ require __DIR__.'/../app/config/environment.php';
 
 use App\Exceptions\RouteNotFoundException;
 use App\Controllers\DemandeController;
+use App\Controllers\AdminController;
 
 
 use App\Middlewares\AuthMiddleware;
@@ -18,7 +19,10 @@ $router
     return 'Hello world';
 })
 ->get('/expiditeur/dashboard', [DemandeController::class, 'Dashboard'])
-->post('/expiditeur/dashboard{id_expiditeur}', [DemandeController::class, 'createAnnonce']);
+->get('/admin/utilisateurs', [AdminController::class, 'afficher'])
+->post('/expiditeur/dashboard{id_expiditeur}', [DemandeController::class, 'createAnnonce'])
+->post('/admin/suspend/{id}', [AdminController::class, 'suspendre']);
+
 
 try{
     echo $router->resolve($_SERVER['REQUEST_URI'], strtolower($_SERVER['REQUEST_METHOD']));
