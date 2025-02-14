@@ -14,7 +14,8 @@ class User{
     protected $updated_at;
     protected $errors = [];
     
-    public function __construct($id = null, $fname = null, $lname = null, $email = null, $password = null, $role = null, $created_at = null, $updated_at = null) {
+
+    public function __construct($id = null, $fname = null, $lname = null, $email = null, $password = null, $role = null, $created_at = null, $updated_at = null){
         try{
             $this->setId($id);
             $this->setFname($fname);
@@ -30,7 +31,7 @@ class User{
     }
 
     // Getters
-    public function getId(){
+    public function getId() {
         return $this->id;
     }
 
@@ -72,7 +73,7 @@ class User{
         }
         $this->id = $id;
     }
-    
+
     public function setFname($fname){
         if($fname != null){
             if(!is_string($fname) || empty($fname))
@@ -108,16 +109,10 @@ class User{
 
     public function setRole($role){
         if($role != null){
-            $validRoles = ['admin', 'condicteur', 'expiditeur'];
+            $validRoles = ['conducteur', 'expediteur'];
             if(!in_array($role, $validRoles))
-                throw new InputException("Role must be 'admin', 'condicteur', 'expiditeur'.");
+                throw new InputException("Role must be 'patient' or 'doctor'.");
         }
         $this->role = $role;
-    }
-
-    public function getErrors(){
-        $errors = $this->errors;
-        $this->errors = [];
-        return $errors;
     }
 }

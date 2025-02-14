@@ -17,7 +17,24 @@
             </div>
             <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                 <div class="bg-white dark:bg-gray-700 px-4 pb-4 pt-8 sm:rounded-lg sm:px-10 sm:pb-6 sm:shadow">
-                    <form method="post" action="/auth/login" class="space-y-6">
+                    <ul class="text-red-500 list-disc px-4 mb-4">
+                        <?php 
+                            if(isset($this->params['errors'])):
+                                foreach($this->params['errors'] as $error): 
+                        ?>
+                        <li><?= $error ?></li>
+                        <?php 
+                                endforeach;
+                            endif; 
+                        ?>
+                    </ul>
+
+                    <?php
+                        if(isset($this->params['success']) && $this->params['success'] == true){
+                            header('location: /auth/login');
+                        }
+                    ?>
+                    <form method="post" action="/auth/register" class="space-y-6">
                         <div>
                             <label for="fname" class="block text-sm font-medium text-gray-700 dark:text-white">First Name</label>
                             <div class="mt-1">
@@ -35,7 +52,7 @@
                             </div>
                         </div>
                         <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-white">Last Name</label>
+                            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-white">Email</label>
                             <div class="mt-1">
                                 <input id="email" type="text" name="email" data-testid="email" required=""
                                     class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:placeholder-gray-300 dark:focus:border-indigo-400 dark:focus:ring-indigo-400 sm:text-sm"
