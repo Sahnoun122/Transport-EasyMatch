@@ -69,14 +69,11 @@
                 <div class="relative">
                     <div class=""></div>
                     <?php
-// Exemple : Récupérer l'ID de l'annonce
-$annonce_id = 1; // Remplacez ceci par la logique pour récupérer l'ID de l'annonce
-
-// Vérifier si la variable est définie
-if (!isset($annonce_id)) {
+         $annonce_id = 1; 
+     if (!isset($annonce_id)) {
     die("Erreur : L'ID de l'annonce n'est pas défini.");
-}
-?>
+     }
+         ?>
                 </div>
                 <div class="p-4">
                     <h3 class="text-lg font-medium mb-2"><?= htmlspecialchars($annonce['description']) ?></h3>
