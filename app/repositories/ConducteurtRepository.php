@@ -23,7 +23,7 @@ class ConducteurtRepository
         try {
             $query = "
                 SELECT
-                    d.id,
+                    
                     d.longueur,
                     d.largeur,
                     d.hauteur,

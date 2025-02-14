@@ -73,7 +73,7 @@
                 </tr>
             </thead>
             <tbody>
-                    <?php foreach ($this->params['Consulter'] as $demande): ?>
+            <?php foreach ($this->params['Consulter'] as $demande): ?>
             <tr class="border-b hover:bg-gray-50">
                 <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['expediteur_name']) ?></td>
                 <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['type']) ?></td>
