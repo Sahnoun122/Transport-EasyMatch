@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Services\DemandeService;
-use App\Services\AuthService;
 use Core\View;
 
 class DemandeController
@@ -20,8 +19,11 @@ class DemandeController
         $statistics = $this->repository->statistics();
         return View::make('expediteur/dashborddemande', ['statistics' => $statistics]);
     }
-    public function createDemande($data){
-        $this->repository->createDemande( $data);
+
+
+
+    public function createDemande(){
+        $this->repository->createDemande($_POST);
         header('Location: /expiditeur/dashboard');
     }
 

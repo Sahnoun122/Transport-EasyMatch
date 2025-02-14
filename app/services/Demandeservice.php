@@ -17,10 +17,28 @@ class DemandeService{
         return $this->repository->afficherAnnonce($conducteur_id);
     }
 
-
-    public function createDemande(Demande $data) {
-        $data['statut'] = 'Soumis'; 
-
-        return $this->repository->insertDemande($data);
+    public function createDemande($request) {
+        try {
+            $demande = new Demande(
+                $_SESSION['user_id'],
+                null, 
+                $request['annonce_id'], 
+                'Soumis', 
+                $request['longueur'], 
+                $request['largeur'], 
+                $request['hauteur'], 
+                $request['poids'], 
+                $request['depart'], 
+                $request['destination'] ,
+                $request['type_id'] 
+            );
+            if ($this->repository->insertDemande($demande)) {
+                return ['success' => true];
+            } else {
+                return ['success' => false, 'errors' => ['Something went wrong please try again later!']];
+            }
+        } catch (InputException $e) {
+            return ['success' => false, 'errors' => [$e->getMessage()]];
+        }
     }
 }

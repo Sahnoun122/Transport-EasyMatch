@@ -1,41 +1,43 @@
 <?php
 
-namespace App\Services;
 
+namespace App\Services;
 use App\Repositories\ConducteurtRepository;
 use App\Exceptions\InputException;
 
-class ConducteurService
-{
-    private ConducteurtRepository $repository;
 
-    public function __construct()
-    {
+class ConducteurService{
+    private  ConducteurtRepository $repository;
+
+
+    public function __construct(){
         $this->repository = new ConducteurtRepository();
     }
+    
 
-    public function statistics()
-    {
-        return [
-            $this->repository->getDemandeDetails(),
-        ];
-    }
-
-    public function accepterDemande($id)
-    {
-        try {
-            return $this->repository->accepterDemande($id);
-        } catch (\Exception $e) {
-            throw new \Exception("Erreur lors de l'acceptation de la demande : " . $e->getMessage());
+    
+    public function  Consulter() {
+        try{
+            return $this->repository->getDemandeDetails();
+        }catch(\Exception $e){
+            return false;
         }
     }
 
-    public function refuserDemande($id)
-    {
-        try {
-            return $this->repository->refuseDemande($id);
-        } catch (\Exception $e) {
-            throw new \Exception("Erreur lors du refus de la demande : " . $e->getMessage());
+
+    public function accepterService($id){
+        try{
+            return $this->repository->accepterdemande($id);
+        }catch(\Exception $e){
+            return false;
+        }
+    }
+   
+    public function refuseService($id){
+        try{
+            return $this->repository->refusedemande($id);
+        }catch(\Exception $e){
+            return false;
         }
     }
 }

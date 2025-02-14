@@ -32,9 +32,9 @@ class DemandeRepository {
                       VALUES (:expediteur_id, :annonce_id, :type_id, :longueur, :largeur, :hauteur, :poids, :depart, :destination, :statut)';
             $stmt = $this->db->prepare($query);
 
-            $stmt->bindValue(':expediteur_id', $data['expediteur_id'], PDO::PARAM_INT);
-            $stmt->bindValue(':annonce_id', $data['annonce_id'], PDO::PARAM_INT);
-            $stmt->bindValue(':type_id', $data['type_id'], PDO::PARAM_INT);
+            $stmt->bindValue(':expediteur_id', $data-> getIdExpedeteur() , PDO::PARAM_INT);
+            $stmt->bindValue(':annonce_id', $data->getIdAnnonce(), PDO::PARAM_INT);
+            $stmt->bindValue(':type_id', $data-> getIdType(), PDO::PARAM_INT);
             $stmt->bindValue(':longueur', $data->getLongueur(), PDO::PARAM_STR);
             $stmt->bindValue(':largeur', $data->getLargeur(), PDO::PARAM_STR);
             $stmt->bindValue(':hauteur', $data->getHauteur() , PDO::PARAM_STR);
@@ -49,9 +49,9 @@ class DemandeRepository {
             return false;
         }
     }
+
 }
 
 
     
     
-
