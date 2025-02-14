@@ -15,34 +15,29 @@ class ConducteurService{
     }
     
 
-    public function Consulter(){
-
-        return $this->repository->getDemandeDetails();
-        
-    }
-    public function accepterdemande($id){
+    
+    public function  Consulter() {
         try{
-            return $this->repository->accepterdemande($id);
+            return $this->repository->getDemandeDetails();
         }catch(\Exception $e){
             return false;
         }
     }
+
+
+    // public function accepterdemande($id){
+    //     try{
+    //         return $this->repository->accepterdemande($id);
+    //     }catch(\Exception $e){
+    //         return false;
+    //     }
+    // }
    
-    public function refusedemande($id){
-        try{
-            return $this->repository->refusedemande($id);
-        }catch(\Exception $e){
-            return false;
-        }
-    }
-
-    public function getDemandeById($id){
-        try{
-            return $this->repository->getDemandeById($id);
-        }catch(\Exception $e){
-            return false;
-        }
-    }
-
-
+    // public function refusedemande($id){
+    //     try{
+    //         return $this->repository->refusedemande($id);
+    //     }catch(\Exception $e){
+    //         return false;
+    //     }
+    // }
 }

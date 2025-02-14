@@ -41,7 +41,7 @@
         <!-- Header -->
         <header class="bg-white shadow rounded-lg p-4 mb-6">
             <div class="flex justify-between items-center">
-                <h1 class="text-2xl font-bold">Tableau de bord</h1>
+                <h1 class="text-2xl font-bold">Demandes</h1>
                 <div class="flex items-center space-x-4">
                     <button class="p-2 hover:bg-gray-100 rounded-full">
                         <span class="sr-only">Notifications</span>
@@ -55,9 +55,7 @@
             </div>
         </header>
 <!-- Main -->
-
 <div class="p-8 sm:ml-80">
-    <h2 class="text-4xl font-semibold text-black mb-6">Demandes</h2>
     <div class="flex items-center justify-center overflow-x-auto shadow-lg rounded-lg" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
         <table class="min-w-full table-auto border-collapse bg-white">
             <thead class="bg-black">
@@ -75,30 +73,29 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($Consulter as $demande): ?>
-                    <tr class="border-b hover:bg-gray-50">
-                        <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['expediteur_name']) ?></td>
-                        <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['type_name']) ?></td>
-                        <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['longueur']) ?></td>
-                        <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['largeur']) ?></td>
-                        <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['hauteur']) ?></td>
-                        <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['poids']) ?></td>
-                        <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['depart']) ?></td>
-                        <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['destination']) ?></td>
-                        <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['statut']) ?></td>
-                        <td class="px-6 py-4">
-                            <form method="POST" action="/conducteur/demande/action" class="flex space-x-2">
-                                <input type="hidden" name="demande_id" value="<?= $demande['id'] ?>">
-                                <button name="action" value="accept" class="text-xl hover:scale-105">✅</button>
-                                <button name="action" value="reject" class="text-xl hover:scale-105">❌</button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
+                    <?php foreach ($this->params['Consulter'] as $demande): ?>
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['expediteur_name']) ?></td>
+                <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['type']) ?></td>
+                <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['longueur']) ?></td>
+                <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['largeur']) ?></td>
+                <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['hauteur']) ?></td>
+                <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['poids']) ?></td>
+                <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['depart']) ?></td>
+                <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['destination']) ?></td>
+                <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['statut']) ?></td>
+                <td class="px-6 py-4">
+                    <form method="POST" action="/conducteur/demande/action" class="flex space-x-2">
+                        <input type="hidden" name="demande_id" value="<?= $demande['id'] ?>">
+                        <button name="action" value="accept" class="text-xl hover:scale-105">✅</button>
+                        <button name="action" value="reject" class="text-xl hover:scale-105">❌</button>
+                    </form>
+                </td>
+            </tr>
+        <?php endforeach; ?>
             </tbody>
         </table>
     </div>
-
 </div>
     </main>
 

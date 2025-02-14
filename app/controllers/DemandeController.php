@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Services\DemandeService;
-use App\Services\AuthService;
 use Core\View;
 
 class DemandeController
