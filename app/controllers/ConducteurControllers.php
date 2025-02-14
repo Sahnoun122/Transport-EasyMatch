@@ -19,34 +19,40 @@ class ConducteurControllers
         $Consulter = $this->repository->Consulter();
         return View::make('conducteur/consulterdemande', ['Consulter' => $Consulter]);
     }
+  
 
+    public function handleDemandeAction()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $demandeId = $_POST['demande_id'] ?? null;
+            $action = $_POST['action'] ?? null;
 
-    // public function actionDemande()
-    // {
-    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //         $demande_id = $_POST['demande_id'];
-    //         $action = $_POST['action'];
+            if ($demandeId && $action) {
+                try {
+                    if ($action === 'Accepte') {
+                        $result = $this->repository->accepterService($demandeId);
+                        if ($result) {
 
-    //         $demande = $this->repository->getDemandeById($demande_id);
-
-    //         if ($demande) {
-    //             // $email = $demande['expediteur_email']; 
-    //             // $prenom = $demande['expediteur_name']; 
-    //             if ($action === 'accept') {
-    //                 $this->repository->accepterdemande($demande_id);
-
-             
-
-    //             } elseif ($action === 'reject') {
-    //                 $this->repository->refusedemande($demande_id);
-
-          
-    //             }
-    //         }
-    //         header('Location:/conducteur/dashbordconsulter');
-    //         exit;
-    //     }
-    // }
-
+                            header('Location: /conducteur/dashbordconsulter');
+                            exit();
+                        }
+                    } elseif ($action === 'Refuse') {
+                        $result = $this->repository->refuseService($demandeId);
+                        if ($result) {
+                            
+                            header('Location: /conducteur/dashbordconsulter');
+                            exit();
+                        }
+                    }
+                } catch (\Exception $e) {
+                    header('Location:  /conducteur/dashbordconsulter');
+                    exit();
+                }
+            }
+        }
+        header('Location: /conducteur/dashbordconsulter');
+        exit();
+    }
 }
+
 ?>

@@ -23,7 +23,7 @@ class ConducteurtRepository
         try {
             $query = "
                 SELECT
-                    
+                    d.id,
                     d.longueur,
                     d.largeur,
                     d.hauteur,
@@ -49,57 +49,36 @@ class ConducteurtRepository
         }
     }
    
-    // public function accepterdemande($id)
-    // {
-    //     try {
-    //         $sql = "UPDATE Annonce SET  Statut = 'Accepte' WHERE id = :id";
-    //         $stmt = $this->db->prepare($sql);
-    //         $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+    public function accepterdemande($id)
+    {
+        try {
+            $sql = "UPDATE Demande 
+                        SET Statut = 'Accepte' 
+                        WHERE id = :id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
 
-    //         $stmt->execute();
-    //     } catch (PDOException $e) {
-    //         return "Erreur lors de la confirmation demande : " . $e->getMessage();
-    //     }
-    // }
+            $stmt->execute();
+        } catch (PDOException $e) {
+            return "Erreur lors de la confirmation demande : " . $e->getMessage();
+        }
+    }
 
 
-    // public function refusedemande($id)
-    // {
-    //     try {
-    //         $sql = "UPDATE Annonce SET  Statut = 'Refuse' WHERE id = :id";
-    //         $stmt = $this->db->prepare($sql);
-    //         $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-    //         $stmt->execute();
-    //     } catch (PDOException $e) {
-    //         return "Erreur lors de la Refuse demande : " . $e->getMessage();
-    //     }
-    // }
+    public function refusedemande($id)
+    {
+        try {
+            $sql = "UPDATE Demande SET  Statut = 'Refuse' WHERE id = :id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            return "Erreur lors de la Refuse demande : " . $e->getMessage();
+        }
+    }
 
 
-    // public function getDemandeById($id)
-    // {
-    //     try {
-    //         $query = "
-    //             SELECT
-    //                 d.*,
-    //                 u.email AS expediteur_email,
-    //                 u.fname AS expediteur_name
-    //             FROM
-    //                 Demande d
-    //             JOIN
-    //                 Users u ON d.expediteur_id = u.id
-    //             WHERE
-    //                 d.id = :id
-    //         ";
-    //         $stmt = $this->db->prepare($query);
-    //         $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-    //         $stmt->execute();
-    //         return $stmt->fetch(PDO::FETCH_ASSOC);
-    //     } catch (PDOException $e) {
-    //         Logger::error_log($e->getMessage());
-    //         return null;
-    //     }
-    // }
+
     
 }

@@ -25,19 +25,19 @@ class ConducteurService{
     }
 
 
-    // public function accepterdemande($id){
-    //     try{
-    //         return $this->repository->accepterdemande($id);
-    //     }catch(\Exception $e){
-    //         return false;
-    //     }
-    // }
+    public function accepterService($id){
+        try{
+            return $this->repository->accepterdemande($id);
+        }catch(\Exception $e){
+            return false;
+        }
+    }
    
-    // public function refusedemande($id){
-    //     try{
-    //         return $this->repository->refusedemande($id);
-    //     }catch(\Exception $e){
-    //         return false;
-    //     }
-    // }
+    public function refuseService($id){
+        try{
+            return $this->repository->refusedemande($id);
+        }catch(\Exception $e){
+            return false;
+        }
+    }
 }

@@ -55,7 +55,7 @@
             </div>
         </header>
 <!-- Main -->
-<div class="p-8 sm:ml-80">
+<div class="p- sm:ml-36">
     <div class="flex items-center justify-center overflow-x-auto shadow-lg rounded-lg" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
         <table class="min-w-full table-auto border-collapse bg-white">
             <thead class="bg-black">
@@ -85,10 +85,10 @@
                 <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['destination']) ?></td>
                 <td class="px-6 py-4 text-sm"><?= htmlspecialchars($demande['statut']) ?></td>
                 <td class="px-6 py-4">
-                    <form method="POST" action="/conducteur/demande/action" class="flex space-x-2">
+                    <form method="POST" action="/conducteur/dashbordconsulter" class="flex space-x-2">
                         <input type="hidden" name="demande_id" value="<?= $demande['id'] ?>">
-                        <button name="action" value="accept" class="text-xl hover:scale-105">✅</button>
-                        <button name="action" value="reject" class="text-xl hover:scale-105">❌</button>
+                        <button name="action" value="Accepte" class="text-xl hover:scale-105">✅</button>
+                        <button name="action" value="Refuse" class="text-xl hover:scale-105">❌</button>
                     </form>
                 </td>
             </tr>
