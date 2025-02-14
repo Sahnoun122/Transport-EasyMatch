@@ -28,7 +28,7 @@ class ConducteurControllers {
                             $sujet = "Confirmation de demande";
                             $destinateur_nom = 'Khadija Sahnoun';
                             $email_nom = 'khadijasahnoun46@gmail.com';
-                            $destinataire = 'gihobej830@intady.com'; 
+                            $destinataire = 'khadijasahnoun70@gmail.com'; 
                             $message = '<h3>Bonjour,</h3><p>Votre demande a été acceptée.</p>';
 
                             $emailController = new EmailController($sujet, $destinateur_nom, $email_nom, $destinataire, $message);
@@ -48,7 +48,7 @@ class ConducteurControllers {
                         $sujet = "Refuse de demande";
                         $destinateur_nom = 'Khadija Sahnoun';
                         $email_nom = 'khadijasahnoun46@gmail.com';
-                        $destinataire = 'gihobej830@intady.com'; 
+                        $destinataire = 'khadijasahnoun70@gmail.com'; 
                         $message = '<h3>Bonjour,</h3><p>Votre demande a été Refuse.</p>';
 
                         $emailController = new EmailController($sujet, $destinateur_nom, $email_nom, $destinataire, $message);
