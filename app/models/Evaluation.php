@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Exceptions\InputException;
-use App\Services\EvaluationService;
+// use App\Services\EvaluationService;
 
 class Evaluation
 {
@@ -76,12 +76,12 @@ class Evaluation
         return $errors;
     }
 
-    public function displayEvaluation() {
-        return [
-            'id' => $this->id,
-            'rate' => $this->rate,
-            'comment' => $this->comment,
-            'createdAt' => $this->createdAt->format('d F Y'),
-        ];
-    }
+    // public function displayEvaluation() {
+    //     return [
+    //         'id' => $this->id,
+    //         'rate' => $this->rate,
+    //         'comment' => $this->comment,
+    //         'createdAt' => $this->createdAt->format('d F Y'),
+    //     ];
+    // }
 }

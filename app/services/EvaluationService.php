@@ -12,9 +12,7 @@ class EvaluationService{
         $this->repository = new EvaluationRepository();
     }
     
-    public function display_evaluation(){
-        return [
-            $this->repository->afficherEvaluation()
-        ];
+    public function display_all_evaluation(){
+        return $this->repository->afficherEvaluation();
     }
 }
