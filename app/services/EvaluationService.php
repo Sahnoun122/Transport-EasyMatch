@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Services;
-use App\Exceptions\InputException;
-use App\Models\Evaluation;
+
 use App\Repositories\EvaluationRepository;
 
 class EvaluationService{
@@ -14,5 +13,10 @@ class EvaluationService{
     
     public function display_all_evaluation(){
         return $this->repository->afficherEvaluation();
+    }
+
+    public function count_star(){
+        $rate = 5;
+        return $this->repository->Stars($rate);
     }
 }

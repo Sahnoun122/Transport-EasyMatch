@@ -22,7 +22,7 @@ $router
 ->get('/expediteur/dashboard', [DemandeController::class, 'Dashboard'])
 ->get('/conducteur/dashbordconsulter', [ConducteurControllers::class, 'Consulter'])
 ->post('/expediteur/dashboard{id_expiditeur}', [DemandeController::class, 'createAnnonce'])
-->get('/admin/evaluation',[EvaluationController::class, 'display_evaluation']);
+->get('/admin/evaluations',[EvaluationController::class, 'display_evaluation']);
 
 
 try{
