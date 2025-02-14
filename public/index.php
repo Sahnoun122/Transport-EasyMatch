@@ -10,6 +10,7 @@ use App\Controllers\AdminController;
 use App\Controllers\EvaluationController;
 use App\Controllers\ConducteurControllers;
 use App\Controllers\AuthController;
+use App\Controllers\AnnonceController;
 
 use App\Middlewares\GuestMiddleware;
 use App\Middlewares\AuthMiddleware;
@@ -35,7 +36,9 @@ $router
     $group->post('/register', [AuthController::class, 'registerPOST']);
     $group->get('/login', [AuthController::class, 'loginGET']);
     $group->post('/login', [AuthController::class, 'loginPOST']);
-}, [GuestMiddleware::class]);
+}, [GuestMiddleware::class])
+->get('/annonce/create', [AnnonceController::class, 'annonceView'], [AuthMiddleware::class, 'conducteur'])
+->post('/annonce/create', [AnnonceController::class, 'createAnnonce'], [AuthMiddleware::class, 'conducteur']);
 
 try{
     echo $router->resolve($_SERVER['REQUEST_URI'], strtolower($_SERVER['REQUEST_METHOD']));
