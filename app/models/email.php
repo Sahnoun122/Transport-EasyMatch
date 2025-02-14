@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php';
+namespace App\Models;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -21,19 +21,14 @@ class Email {
 
         $this->mail = new PHPMailer(true);
 
-        try {
-            // Configuration SMTP
-            $this->mail->isSMTP();
-            $this->mail->Host = 'smtp.gmail.com';
-            $this->mail->SMTPAuth = true;
-            $this->mail->Username = 'khadijasahnoun46@gmail.com';
-            $this->mail->Password = 'krzb qupu xlun aemc';
-            $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $this->mail->Port = 587;
-            $this->mail->CharSet = 'UTF-8';
-        } catch (Exception $e) {
-            die("Erreur SMTP : " . $this->mail->ErrorInfo);
-        }
+        $this->mail->isSMTP();
+        $this->mail->Host = 'smtp.gmail.com'; 
+        $this->mail->SMTPAuth = true;
+        $this->mail->Username = 'khadijasahnoun46@gmail.com'; 
+        $this->mail->Password = 'ncln bbio eote btwi'; 
+        $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; 
+        $this->mail->Port = 587 ;
+        $this->mail->CharSet = 'UTF-8'; 
     }
 
     public function envoyerEmail() {
@@ -45,12 +40,12 @@ class Email {
             $this->mail->isHTML(true);
             $this->mail->Subject = $this->sujet;
             $this->mail->Body = $this->message;
-            $this->mail->AltBody = strip_tags($this->message);
+            $this->mail->AltBody = strip_tags($this->message); 
 
             $this->mail->send();
-            return "Email envoyé avec succès à {$this->destinataire} !";
+            return "E-mail envoyé avec succès à {$this->destinataire} !";
         } catch (Exception $e) {
-            return "Erreur lors de l'envoi : " . $this->mail->ErrorInfo;
+            return "Erreur lors de l'envoi de l'e-mail : " . $this->mail->ErrorInfo;
         }
     }
 }

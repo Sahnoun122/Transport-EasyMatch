@@ -25,8 +25,8 @@
             <h2 class="text-2xl font-bold mb-6">EasyMatch Admin</h2>
             <nav>
                 <a href="#" class="block py-2 px-4 bg-gray-700 rounded mb-2">Tableau de bord</a>
-                <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Utilisateurs</a>
-                <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Annonces</a>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Annonce</a>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Consulter Demande</a>
                 <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Transactions</a>
                 <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded mb-2">Évaluations</a>
             </nav>
