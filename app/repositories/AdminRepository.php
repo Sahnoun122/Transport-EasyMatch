@@ -2,19 +2,23 @@
 
 namespace App\Repositories;
 
-use App\Models;
+use App\Models\admin;
 use Core\Database;
 use PDO;
 use PDOException;
 use Core\Logger;
 
+use APP\Exceptions\EnvException;
+// use Core\Logger;
+
 class AdminRepository
 {
-    private PDO $db;
+    private $db;
 
     public function __construct()
     {
         $this->db = Database::getInstance()->getConnection();
+
     }
     public function  suspendreUser($id)
     {
@@ -45,7 +49,7 @@ class AdminRepository
     public function  getAllUser()
     {
         try {
-            $sql = "select  *  from  users";
+            $sql = "SELECT  *  FROM  users";
             $stmt = $this->db->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

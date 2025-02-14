@@ -69,9 +69,9 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                        <?php foreach ($users as $user) { ?>
+                        <?php foreach ($this->parames['afficher'] as $user) { ?>
                             <tr>
-                                <td class="px-6 py-4">#1234</td>
+                                <td class="px-6 py-4"> $user['id']</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
                                         <img src="/api/placeholder/32/32" alt="" class="w-8 h-8 rounded-full mr-3">
@@ -90,8 +90,8 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex space-x-2">
-                                        <form action='/user/<?php echo $row['is_suspend'] = 1  ? 'suspend' : 'valide'; ?>/<?= $row['id'] ?>' method="POST">
-                                            <button class="text-red-600 hover:text-red-900"><?php echo $row['is_suspend'] = 1  ? 'Suspend' : 'Valide'; ?></button>
+                                        <form action='/user/<?php echo $user['is_suspend'] = 1  ? 'suspend' : 'valide'; ?>/<?= $user['id'] ?>' method="POST">
+                                            <button class="text-red-600 hover:text-red-900"><?php echo $user['is_suspend'] = 1  ? 'Suspend' : 'Valide'; ?></button>
                                         </from>
                                     </div>
                                 </td>

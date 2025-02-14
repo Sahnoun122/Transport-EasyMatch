@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Repositories\AdminRepository;
-// use App\Exceptions\InputException;
 
 class AdminService
 {
