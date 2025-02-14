@@ -56,7 +56,7 @@ class ConducteurtRepository
         }
     }
 
-    public function refusedemande($id)
+    public function refuseDemande($id)
     {
         try {
             $sql = "UPDATE Annonce SET  Statut = 'Refuse' WHERE id = :id";

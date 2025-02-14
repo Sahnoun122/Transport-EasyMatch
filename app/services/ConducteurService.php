@@ -2,16 +2,16 @@
 
 namespace App\Services;
 
-use App\Repositories\ConducteurRepository;
+use App\Repositories\ConducteurtRepository;
 use App\Exceptions\InputException;
 
 class ConducteurService
 {
-    private ConducteurRepository $repository;
+    private ConducteurtRepository $repository;
 
     public function __construct()
     {
-        $this->repository = new ConducteurRepository();
+        $this->repository = new ConducteurtRepository();
     }
 
     public function statistics()
@@ -33,7 +33,7 @@ class ConducteurService
     public function refuserDemande($id)
     {
         try {
-            return $this->repository->refuserDemande($id);
+            return $this->repository->refuseDemande($id);
         } catch (\Exception $e) {
             throw new \Exception("Erreur lors du refus de la demande : " . $e->getMessage());
         }
