@@ -6,7 +6,6 @@ require __DIR__.'/../app/config/environment.php';
 use App\Exceptions\RouteNotFoundException;
 use App\Controllers\DemandeController;
 use App\Controllers\EvaluationController;
-use App\Middlewares\AuthMiddleware;
 
 $router = new Core\Router;
 
@@ -18,7 +17,7 @@ $router
 })
 ->get('/expediteur/dashboard', [DemandeController::class, 'Dashboard'])
 ->post('/expediteur/dashboard{id_expiditeur}', [DemandeController::class, 'createAnnonce'])
-->get('/admin/evaluation',[EvaluationController::class, 'display_evaluation']);
+->get('/admin/evaluations',[EvaluationController::class, 'display_evaluation']);
 
 
 try{
