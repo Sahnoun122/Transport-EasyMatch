@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -67,6 +68,15 @@
     </div>
                 <div class="relative">
                     <div class=""></div>
+                    <?php
+// Exemple : Récupérer l'ID de l'annonce
+$annonce_id = 1; // Remplacez ceci par la logique pour récupérer l'ID de l'annonce
+
+// Vérifier si la variable est définie
+if (!isset($annonce_id)) {
+    die("Erreur : L'ID de l'annonce n'est pas défini.");
+}
+?>
                 </div>
                 <div class="p-4">
                     <h3 class="text-lg font-medium mb-2"><?= htmlspecialchars($annonce['description']) ?></h3>
@@ -75,7 +85,7 @@
                     <p class="text-gray-600 text-sm mb-4">Created At: <?= htmlspecialchars($annonce['created_at']) ?></p>
                 </div>
 
-                
+                       
 <!-- Bouton pour ouvrir la modal -->
 <button data-modal-target="crud-modal"  onclick="btn()"  data-modal-toggle="crud-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mb-5 ml-5" type="button">
     Demande
@@ -98,42 +108,73 @@
                     <span class="sr-only">Close modal</span>
                 </button>
             </div>
-            <form class="p-4 md:p-5" method="POST" action="votre_script_php.php">
+
+
+            <form class="p-4 md:p-5" method="POST" action="/expiditeur/dashboard{id_expiditeur}">
     <div class="grid gap-4 mb-4 grid-cols-2">
+        <!-- Champ Longueur -->
         <div class="col-span-2 sm:col-span-1">
-            <label for="longueur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">longueur</label>
-            <input type="number" name="longueur" id="longueur" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="longueur" required>
+            <label for="longueur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Longueur (en cm)</label>
+            <input type="number" name="longueur" id="longueur" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Entrez la longueur" required min="1">
         </div>
+
+        <!-- Champ Largeur -->
         <div class="col-span-2 sm:col-span-1">
-            <label for="largeur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">largeur</label>
-            <input type="number" name="largeur" id="largeur" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="largeur" required>
+            <label for="largeur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Largeur (en cm)</label>
+            <input type="number" name="largeur" id="largeur" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Entrez la largeur" required min="1">
         </div>
+
+        <!-- Champ Hauteur -->
         <div class="col-span-2 sm:col-span-1">
-            <label for="hauteur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">hauteur</label>
-            <input type="number" name="hauteur" id="hauteur" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="hauteur" required>
+            <label for="hauteur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hauteur (en cm)</label>
+            <input type="number" name="hauteur" id="hauteur" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Entrez la hauteur" required min="1">
         </div>
+
+        <!-- Champ Poids -->
         <div class="col-span-2 sm:col-span-1">
-            <label for="poids" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">poids</label>
-            <input type="number" name="poids" id="poids" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="poids" required>
+            <label for="poids" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Poids (en kg)</label>
+            <input type="number" name="poids" id="poids" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Entrez le poids" required min="1">
         </div>
+
+        <!-- Champ Départ -->
         <div class="col-span-2 sm:col-span-1">
-            <label for="depart" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">depart</label>
-            <input type="text" name="depart" id="depart" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="depart" required>
+            <label for="depart" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lieu de départ</label>
+            <input type="text" name="depart" id="depart" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Entrez le lieu de départ" required>
         </div>
+
+        <!-- Champ Destination -->
         <div class="col-span-2 sm:col-span-1">
-            <label for="destination" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">destination</label>
-            <input type="text" name="destination" id="destination" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="destination" required>
+            <label for="destination" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Destination</label>
+            <input type="text" name="destination" id="destination" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Entrez la destination" required>
         </div>
     </div>
+
+    <!-- Champ caché pour l'ID de l'annonce -->
+    <input type="hidden" name="annonce_id" value="<?php echo $annonce_id; ?>">
+    <input type="hidden" name="type_id" value="<?php echo $type_id; ?>">
+
+
+    <!-- Bouton de soumission -->
     <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-        <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-        Demandé
+        <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
+        </svg>
+        Demander
     </button>
 </form>
         </div>
     </div>
 </div>
 </div> 
+
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>No active annonces found.</p>
+    <?php endif; ?>
+</div>
+
+
         </div>
         <!-- Charts Section -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
@@ -279,4 +320,4 @@ let btn = function() {
     </script>
 </body>
 
-</html>                     
+</html>
